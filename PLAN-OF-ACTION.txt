@@ -1,0 +1,40 @@
+MEANING OF STATUSES
+
+"ND" = "Not Done" = Step is not completed and functionality is still missing
+"DNT" = "Done but Not Tested" = The code is there for the functionality but not all team members have tested it yet
+"1R" = "1 Reviewer" = This means only one person has reviewed and tested the step.
+"2R" = "2 Reviewers" = 2 people have reviewed and tested.
+"3R" = "3 Reviewers" = 3 out of 4 members have looked at it and tested.
+"4R" = "4 Reviewers" = All 4 team members have reviewed the step, tested the functionality, and ensured there is nothing wrong. "4R" is the final status and indicates that the step is fully completed and correct and there are no further objections.
+-----------------------
+Edit this file and update the statuses when appropriate.
+-----------------------
+STEPS TO IMPLEMENT (MUST DO THIS ONE BY ONE AND IN ORDER)
+-----------------------
+
+******* WEEK 1 *******
+1) Create a button in the toolbar | ND
+2) Make the button have a popup once clicked | ND
+3) Produce a basic anime recommendation and display in the popup | ND
+4) Add the time functionality to the recommender | ND
+
+All above steps should be done by Sunday, March 24. Hold a meeting to discuss progress and next steps. | ND
+
+******* WEEK 2 *******
+5) (Placeholder. Update the steps once discussed at meeting.)
+X)
+X)
+X)
+X)
+X)
+
+Complete all above tasks by Sunday, March 31. Hold a meeting to discuss next steps and update plan of action | ND
+
+******* WEEK 3 *******
+X)
+X)
+X)
+X)
+X)
+
+Complete all above steps by Sunday, April 7. Hold a meeting | ND
