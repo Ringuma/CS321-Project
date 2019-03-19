@@ -19,21 +19,21 @@ Edit this file and update the statuses when appropriate.
 STEPS TO IMPLEMENT (MUST DO THIS ONE BY ONE AND IN ORDER)
 -----------------------
 
-******* WEEK 1 *******
+******* WEEK 1 ******* THEME: BASIC USER INTERFACE
 0) Every one should go through the Google Chrome extension tutorial
    as required knowledge, FINISH BY TUESDAY OR WEDNESDAY THIS WEEK              | Tanya, D | Steven, Saad, Michael, ND
 1) Create a button in the toolbar                                               | ND
 2) Make the button have a popup once clicked                                    | ND
-3) Produce a basic anime recommendation and display in the popup                | ND
-4) Add the time functionality to the recommender                                | ND
+3) Design the rest of the User Interface once basic layout is done              | ND
+4) Make the settings page                                                       | ND
 
 All above steps should be done by Sunday, March 24.
 Hold a meeting to discuss progress and next steps.                              | ND
 
-******* WEEK 2 *******
-5) (Placeholder. Update the steps once discussed at meeting.)
-X)
-X)
+******* WEEK 2 ******* THEME: BASIC FUNCTIONALITY
+5) Produce a basic anime recommendation and display in the popup                | ND
+6) Incorporate the time functionality                                           | ND
+7) Incorporate the filter functionality                                         | ND
 X)
 X)
 X)
