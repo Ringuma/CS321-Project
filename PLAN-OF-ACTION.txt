@@ -7,7 +7,7 @@ MEANING OF STATUSES
 
 "PT"  = "Partially Tested"    = This means not everyone has reviewed and tested the step.
 
-"D"  = "Done"                 = All 4 team members have reviewed the step,
+"D"   = "Done"                = All 4 team members have reviewed the step,
                                 tested the functionality, and ensured there is nothing wrong.
 
 "D" is the final status and indicates that the step
