@@ -33,7 +33,7 @@ Hold a meeting to discuss progress and next steps.                              
 ******* WEEK 2 ******* THEME: BASIC FUNCTIONALITY
 5) Produce a basic anime recommendation and display in the popup                | ND
 6) Incorporate the time functionality                                           | ND
-7) Incorporate the filter functionality                                         | ND
+7) Begin the filter functionality                                               | ND
 X)
 X)
 X)
@@ -41,8 +41,8 @@ X)
 Complete all above tasks by Sunday, March 31.
 Hold a meeting to discuss next steps and update plan of action                  | ND
 
-******* WEEK 3 *******
-X)
+******* WEEK 3 ******* THEME: ADVANCED FUNCTIONALITY
+8) Finalize the filter functionality                                            | ND
 X)
 X)
 X)
@@ -50,3 +50,5 @@ X)
 
 Complete all above steps by Sunday, April 7.
 Hold a meeting                                                                  | ND
+
+******* WEEK 4 ******* THEME: MINOR FUNCTIONALITY AND FINAL REVIEW
