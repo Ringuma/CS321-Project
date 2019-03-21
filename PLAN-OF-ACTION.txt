@@ -21,7 +21,7 @@ STEPS TO IMPLEMENT (MUST DO THIS ONE BY ONE AND IN ORDER)
 
 ******* WEEK 1 ******* THEME: BASIC USER INTERFACE
 0) Every one should go through the Google Chrome extension tutorial
-   as required knowledge, FINISH BY TUESDAY OR WEDNESDAY THIS WEEK              | Tanya, D | Steven, Saad, Michael, ND
+   as required knowledge, FINISH BY TUESDAY OR WEDNESDAY THIS WEEK              | Tanya, Michael, D | Steven, Saad, ND
 1) Create a button in the toolbar                                               | ND
 2) Make the button have a popup once clicked                                    | ND
 3) Design the rest of the User Interface once basic layout is done              | ND
