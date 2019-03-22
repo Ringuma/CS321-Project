@@ -1,1 +1,10 @@
-
+{
+  "name": "Anime Recommendation Extension",
+  "version": "0.1",
+  "description": "For all those weebs who need new anime to watch.",
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 2
+  
+}
