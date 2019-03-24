@@ -1,15 +1,16 @@
-.wrapper {
+#wrapper {
   width: 500px;
   overflow: hidden;
 }
 
-.cover_art {
+#cover_art {
   width: 250px;
   float: left;
   border: 1px solid red;
 }
 
-.description {
+#description {
+  color: blue;
   width: 250px;
   float: left;
   border: 1px solid green;
