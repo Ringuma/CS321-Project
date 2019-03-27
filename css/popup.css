@@ -1,0 +1,69 @@
+#wrapper1 {
+  height: 100px;
+  width: 252px;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+#cover_art {
+  height:100px;
+  width: 100px;
+  float: left;
+  background-color: gray;
+}
+
+#cover_art > img {
+  height: 100px;
+  width: 100px;
+}
+
+#description {
+  width: 150px;
+  vertical-align: top;
+  float: right;
+}
+
+#description > h1 {
+  font-family: monospace;
+}
+
+#description > p {
+  font-family: monospace;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 50%;
+}
+
+#footer {
+  height: 10px;
+  width: 252px;
+  padding: 15px;
+  overflow: hidden;
+}
+
+#refresh_button {
+  height: 20px;
+  width: 20px;
+  background-color: pink;
+  vertical-align: text-bottom;
+  float: right;
+}
+
+#settings > a:link {
+  color: midnightblue;
+  font-family: monospace;
+  font-size: 11px;
+  float: left;
+}
+
+#settings > a:visited {
+  color: midnightblue;
+}
+
+#settings > a:hover {
+  color: aquamarine;
+}
+
+#settings > a:active {
+  color: greenyellow;
+}
