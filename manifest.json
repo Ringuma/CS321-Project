@@ -3,9 +3,12 @@
   "version": "0.1",
   "description": "For all those weebs who need new anime to watch.",
   "options_page": "html/options.html",
-  "content_security_policy": "script-src https://www.gstatic.com/charts/ 'self'; object-src 'self' https://www.gstatic.com/charts/;",
   "browser_action": {
     "default_popup": "html/popup.html"
+  },
+  "background": {
+    "scripts": ["./js/background.js"],
+    "persistent": false
   },
   "manifest_version": 2
 }
