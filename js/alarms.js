@@ -59,7 +59,7 @@ function toogle(){ //the toggle of the recommender
 	});		
 }
 
-$$('#toogleAlarm').addEventListener('click', doToogleAlarm);
+$$('#toogleAlarm').addEventListener('click', toggle);
 checkAlarm();
 
 })();
