@@ -1,11 +1,11 @@
 function(){
 var al = 'timer'; //the name of the timer
-var time = 0; //a variable that holds the current toggle state
+var time = 1; //a variable that holds the current toggle state
 
 function createAlarm(time){ //the generation of the various alarms that result in 
 	//Have an if-else if statement for the different types to create? Track using a time variable
 	//daily
-	if(time = 0){
+	if(time = 3){
 		chrome.alarms.create(al, {delayInMinutes: 1440, periodInMinutes: 1440});
 		time = 1;
 	}
@@ -23,16 +23,13 @@ function createAlarm(time){ //the generation of the various alarms that result i
 
 function shutOff(time){ //turns the recommender off.
 	chrome.alarms.clear(al);
-	time = 0;
 }
 
 function check(callback){
 	chrome.alarms.getAll(function(alarms){ //checks the current state of the toggle and provides text.
 		var alarmOn = alarms.some(function(n){ return n.name == al;});
 		if(alarmOn && time = 3;){
-			document.getElementById('toogleAlarm').innerText = "Recommendations set to monthly. Turn Recommender Off?";
-		} else if(time = 0){
-			document.getElementById('toogleAlarm').innerText = "Recommender off. Turn Recommender on to Daily?";
+			document.getElementById('toogleAlarm').innerText = "Recommendations set to monthly. Turn Recommender on to Daily?";
 		}else if(alarmOn && time = 1){
 			document.getElementById('toogleAlarm').innerText = "Recommendations set to daily. Turn Recommender on to Weekly?";
 		} else if(alarmOn && time = 2){
@@ -42,25 +39,23 @@ function check(callback){
 	})
 }
 
-function toogle(){ //the toggle of the recommender
+function toggle(){ //the toggle of the recommender
 	check(function(alarmOn){
 		if(alarmOn && time = 3){
 			shutOff(time);
-		}else if(time = 0){
-			shutOff(time);
 			createAlarm(time);
-		}
-		else if(alarmOn && time = 1){
+		}else if(alarmOn && time = 1){
 			shutOff(time);
 			createAlarm(time);
 		}else if(alarmOn && time = 2){
+			shutoff(time);
 			createAlarm(time);
 		}
 		check();
 	});		
 }
 
-$$('#toogleAlarm').addEventListener('click', toogle);
+$$('#toggleAlarm').addEventListener('click', toggle);
 check();
 
 }();
