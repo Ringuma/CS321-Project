@@ -1,13 +1,12 @@
 
-
+var spreadsheetURL = "../data/myAnimeListData.csv";
 var sheetData = "";
 
 $.ajax({
     type: "GET",
-    url: "../data/myAnimeListData.csv",
+    url: spreadsheetURL,
     dataType: "text",
     success: function(data) {
-        alert("worked");
         sheetData = $.csv.toArrays(data);
         alert(sheetData[0][0]);
     },
@@ -16,8 +15,13 @@ $.ajax({
     }
  });
 
-function computeRandomRecommendation(data) {
+function computeRecommendation(data) {
 
+}
+
+function applyFilters(data, filters) {
+
+  
 }
 
 //var clientID = "983014862567-srsvv1p8djudqjalo4onabl8qog48mdi.apps.googleusercontent.com";
