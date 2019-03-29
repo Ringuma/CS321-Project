@@ -1,22 +1,22 @@
-(function(){
-var al = 'Pop-Up'; //a placeholder variable that appears at the toggled interval
+function(){
+var al = 'timer'; //the name of the timer
 var time = 0; //a variable that holds the current toggle state
 
 function createAlarm(time){ //the generation of the various alarms that result in 
 	//Have an if-else if statement for the different types to create? Track using a time variable
 	//daily
 	if(time = 0){
-		chrome.alarms.create(al, {periodInMinutes: 1440});
+		chrome.alarms.create(al, {delayInMinutes: 1440, periodInMinutes: 1440});
 		time = 1;
 	}
 	//weekly
 	else if(time = 1){
-		chrome.alarms.create(al, {periodInMinutes: 10080});
+		chrome.alarms.create(al, {delayInMinutes: 10080, periodInMinutes: 10080});
 		time = 2;
 	}
 	// monthly
 	else if(time = 2){?
-		chrome.alarms.create(al, {periodInMinutes: 43200});
+		chrome.alarms.create(al, {delayInMinutes: 43800, periodInMinutes: 43800});
 		time = 3;
 	}
 }
@@ -47,10 +47,11 @@ function toogle(){ //the toggle of the recommender
 		if(alarmOn && time = 3){
 			shutOff(time);
 		}else if(time = 0){
+			shutOff(time);
 			createAlarm(time);
-			document.getElementById(
 		}
 		else if(alarmOn && time = 1){
+			shutOff(time);
 			createAlarm(time);
 		}else if(alarmOn && time = 2){
 			createAlarm(time);
@@ -59,7 +60,7 @@ function toogle(){ //the toggle of the recommender
 	});		
 }
 
-$$('#toogleAlarm').addEventListener('click', toggle);
+$$('#toogleAlarm').addEventListener('click', toogle);
 check();
 
-})();
+}();
