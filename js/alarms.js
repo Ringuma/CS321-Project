@@ -45,7 +45,7 @@ function check(callback){
 function toogle(){ //the toggle of the recommender
 	check(function(alarmOn){
 		if(alarmOn && time = 3){
-			shutOff();
+			shutOff(time);
 		}else if(time = 0){
 			createAlarm(time);
 			document.getElementById(
@@ -55,11 +55,11 @@ function toogle(){ //the toggle of the recommender
 		}else if(alarmOn && time = 2){
 			createAlarm(time);
 		}
-		checkAlarm();
+		check();
 	});		
 }
 
 $$('#toogleAlarm').addEventListener('click', toggle);
-checkAlarm();
+check();
 
 })();
