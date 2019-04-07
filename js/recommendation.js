@@ -1,44 +1,49 @@
 
 var myStorage = window.localStorage;
 var spreadsheetURL = "../data/myAnimeListData.csv";
-//var sheetData = [];
-//var Recommendation = null;
 
-// load dataset and compute recommendation when popup loads
+// event listener that displays recommendation upon opening of popup
 document.addEventListener("DOMContentLoaded", function(){
 
-  // checks to see if recommendation was already computed
+  // load dataset  when popup opens for the first time
   if (myStorage.getItem("initialized") !== "true") {
-    loadData();
+    loadData(); // loads dataset, which then calls computeRecommendation(), which then calls displayRec()
     //computeRecommendation();
-    console.log("first compute!");
+    //console.log("first compute!");
   }
   else {
+    // displays previous recommendation
     displayRec();
   }
-
-
 }, false);
 
+// event listener that computes a new recommendation upon clicking the refresh button
 document.getElementById("refresh_button").addEventListener("click", function() {
-   //alert("click!");
    computeRecommendation();
 })
 
+// function that loads spreadsheet data
 function loadData() {
   $.ajax({
       type: "GET",
       url: spreadsheetURL,
       dataType: "text",
       success: function(data) {
+          // sets localStorage item "animeData" to the stringified 2D array parsed from the spreadsheet
           myStorage.setItem("animeData", JSON.stringify($.csv.toArrays(data)));
 
-          // first, title; second, genre array; third, link string
+          // Recommendation: an array that represents a single recommendation
+          // first index = title
+          // second index = genre array
+          // third index = anime ID
           var Recommendation = [null,null,null]
+
+          // initialized localStorage Recommendation item
+          // and sets initialized value in localStorage to true
           myStorage.setItem("recommendation", JSON.stringify(Recommendation));
           myStorage.setItem("initialized", "true");
-          console.log(myStorage.getItem("recommendation") + " is initialized == " + myStorage.getItem("initialized"));
-          computeRecommendation();
+          // console.log(myStorage.getItem("recommendation") + " is initialized == " + myStorage.getItem("initialized"));
+          computeRecommendation(); // computes initial recommendation
       },
       error: function (request, status, error) {
           alert(request.responseText);
@@ -48,9 +53,10 @@ function loadData() {
 
 
 
-
+// this function computes a random recommendation based on given inputs
 function computeRecommendation() {
   console.log("in computeRec");
+  // 2d array that represents current dataset for anime
   var animeData = JSON.parse(myStorage.getItem("animeData"));
 
   // generate random index between 1-dataset length (excluse 0th index
@@ -58,28 +64,29 @@ function computeRecommendation() {
   var min = 1;
   var max = animeData.length;
 
-  // calculates random index 1-animeData.length inclusive
+  // calculates random index 1 to animeData.length inclusive
   var index = Math.floor(Math.random() * (max - min + 1)) + min;
 
   // build Recommendation object
-  var Recommendation = [animeData[index][1], animeData[index][3], "bla"];
+  var Recommendation = [animeData[index][1], animeData[index][3], animeData[index][0]];
 
+  // saves current recommendation in localStorage
   myStorage.setItem("recommendation", JSON.stringify(Recommendation));
 
+  // displays the recommendation
   displayRec();
 }
 
+// this function displays the current recommendation in the popup
 function displayRec() {
-  //if (myStorage.getItem("animeData")) {
+    var recommendation = JSON.parse(myStorage.getItem("recommendation"));
+    // changes the popup HTML to reflect current recommendation
     document.getElementById("description").innerHTML =
-    "<h1>" + JSON.parse(myStorage.getItem("recommendation"))[0] + "<h1>";
-    console.log("recommendation = " + myStorage.getItem("recommendation") + "\n initialized = " + myStorage.getItem("initialized"));
-    //myStorage.setItem("recommendation", myStorage.getItem("recommendation"));
-  //}
-  //else {
-  //  document.getElementById("description").innerHTML = "<p>Database is not available.<p>";
-  //  alert("Data not loaded");
-  //}
+    `<h1>Your Recommendation</h1>
+    <p>Title: ${recommendation[0]}<p>
+    <p>Genre: ${recommendation[1]}</p>
+    <a target=\"_blank\" href=\"https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}\">MAL Link.</a>`;
+    //console.log("recommendation = " + myStorage.getItem("recommendation") + "\n initialized = " + myStorage.getItem("initialized"));
 }
 
 function applyFilters(data, filters) {
