@@ -3,12 +3,28 @@
   "version": "0.1",
   "description": "For all those weebs who need new anime to watch.",
   "options_page": "html/options.html",
-  "browser_action": {
+
+  "browser_action":
+  {
+    "default_icon":
+		{
+			"16": "images/small_16.png",
+			"32": "images/big_32.png"
+		},
     "default_popup": "html/popup.html"
   },
-  "background": {
+  "background":
+  {
     "scripts": ["./js/background.js"],
     "persistent": false
   },
+
+  "icons":
+	{
+      "16": "images/small_16.png",
+      "32": "images/big_32.png"
+  },
+
+
   "manifest_version": 2
 }
