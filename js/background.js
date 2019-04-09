@@ -1,1 +1,2 @@
 
+//popup.onload = computeRecommendation();

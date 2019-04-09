@@ -1,6 +1,6 @@
 #wrapper1 {
-  height: 100px;
-  width: 252px;
+  height: 120px;
+  width: 270px;
   margin-top: 0;
   overflow: hidden;
 }
@@ -18,20 +18,25 @@
 }
 
 #description {
-  width: 150px;
+  width: 155px;
+  height: 120px;
   vertical-align: top;
   float: right;
+  overflow-y: auto;
 }
 
 #description > h1 {
   font-family: monospace;
+  font-size: 14px;
+  margin: 2px;
 }
 
 #description > p {
   font-family: monospace;
   font-style: italic;
   font-size: 12px;
-  line-height: 50%;
+  line-height: 100%;
+  margin: 3px;
 }
 
 #footer {
