@@ -4,23 +4,19 @@ var spreadsheetURL = "../data/myAnimeListData.csv";
 
 // event listener that displays recommendation upon opening of popup
 document.addEventListener("DOMContentLoaded", function(){
-
   // load dataset  when popup opens for the first time
   if (myStorage.getItem("initialized") !== "true") {
     loadData(); // loads dataset, which then calls computeRecommendation(), which then calls displayRec()
-    //computeRecommendation();
-    //console.log("first compute!");
   }
   else {
-    // displays previous recommendation
-    displayRec();
+    displayRec(); // displays previous recommendation
   }
 }, false);
 
 // event listener that computes a new recommendation upon clicking the refresh button
 document.getElementById("refresh_button").addEventListener("click", function() {
    computeRecommendation();
-})
+});
 
 // function that loads spreadsheet data
 function loadData() {
@@ -29,8 +25,14 @@ function loadData() {
       url: spreadsheetURL,
       dataType: "text",
       success: function(data) {
+          var spreadsheetData = $.csv.toArrays(data);
+
           // sets localStorage item "animeData" to the stringified 2D array parsed from the spreadsheet
-          myStorage.setItem("animeData", JSON.stringify($.csv.toArrays(data)));
+          myStorage.setItem("animeData", JSON.stringify(spreadsheetData));
+
+          // "filteredData" is a subset of "animeData" that only includes entries that match the current selection of Filters
+          // by default is equal to "animeData" if no filters are selected
+          myStorage.setItem("filteredData", JSON.stringify(spreadsheetData));
 
           // Recommendation: an array that represents a single recommendation
           // first index = title
@@ -42,6 +44,11 @@ function loadData() {
           // and sets initialized value in localStorage to true
           myStorage.setItem("recommendation", JSON.stringify(Recommendation));
           myStorage.setItem("initialized", "true");
+
+          // initializes current filters
+          var filters = [];
+          myStorage.setItem("currentFilters", JSON.stringify(filters));
+
           // console.log(myStorage.getItem("recommendation") + " is initialized == " + myStorage.getItem("initialized"));
           computeRecommendation(); // computes initial recommendation
       },
@@ -55,11 +62,10 @@ function loadData() {
 
 // this function computes a random recommendation based on given inputs
 function computeRecommendation() {
-  console.log("in computeRec");
   // 2d array that represents current dataset for anime
-  var animeData = JSON.parse(myStorage.getItem("animeData"));
+  var animeData = JSON.parse(myStorage.getItem("filteredData"));
 
-  // generate random index between 1-dataset length (excluse 0th index
+  // generate random index between 1-dataset length (exclude 0th index
   // because the 0th index is the header for the dataset)
   var min = 1;
   var max = animeData.length;
@@ -86,13 +92,9 @@ function displayRec() {
     <p>Title: ${recommendation[0]}<p>
     <p>Genre: ${recommendation[1]}</p>
     <a target=\"_blank\" href=\"https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}\">MAL Link.</a>`;
-    //console.log("recommendation = " + myStorage.getItem("recommendation") + "\n initialized = " + myStorage.getItem("initialized"));
 }
 
-function applyFilters(data, filters) {
 
-
-}
 /*
 document.addEventListener("load", function() {
   computeRecommendation();
