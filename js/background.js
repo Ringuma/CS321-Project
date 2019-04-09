@@ -1,3 +1,3 @@
 chrome.alarms.onAlarm.addListener(function(timer) {
-  alert("I work");
+  alert("You have a new recommendation!"); //placeholder
 });
