@@ -13,18 +13,18 @@ document.addEventListener("DOMContentLoaded", function(){
   else {
     // displays previous recommendation and updates to a new recommendation when the alarm goes off
     displayRec();
-	chrome.alarms.onAlarm.addListener(function(alarm) {
-		computeRecommendation();
+	  chrome.alarms.onAlarm.addListener(function(alarm) {
+		    computeRecommendation();
 		});
   }
 }, false);
 
 chrome.runtime.sendMessage({check: "here"}, function(response){ //computes a new recommendation for the popup when the popup is not open
-		if(response.call){
-		computeRecommendation();
+		if(response != undefined && response.call){
+		    computeRecommendation();
 		}
 	});
-	
+
 // event listener that computes a new recommendation upon clicking the refresh button
 document.getElementById("refresh_button").addEventListener("click", function() {
    computeRecommendation();
@@ -108,5 +108,3 @@ document.addEventListener("load", function() {
 */
 //var clientID = "983014862567-srsvv1p8djudqjalo4onabl8qog48mdi.apps.googleusercontent.com";
 //var spreadsheetID = "1brguO5nGfXS-Fr1Xcf3pqPTQoBUPGLTYM_EMAA9yJFw";
-
-
