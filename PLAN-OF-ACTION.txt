@@ -25,13 +25,13 @@ STEPS TO IMPLEMENT (MUST DO THIS ONE BY ONE AND IN ORDER)
 1) Create a button in the toolbar                                               | D
 2) Make the button have a popup once clicked                                    | D
 3) Design the rest of the User Interface once basic layout is done              | D
-4) Make the settings page                                                       | PT
+4) Make the settings page                                                       | D
 
 All above steps should be done by Sunday, March 24.
-Hold a meeting to discuss progress and next steps.                              | ND
+Hold a meeting to discuss progress and next steps.                              | D
 
 ******* WEEK 2 ******* THEME: BASIC FUNCTIONALITY
-5) Produce a basic anime recommendation and display in the popup                | ND
+5) Produce a basic anime recommendation and display in the popup                | PT
 6) Incorporate the time functionality                                           | ND
 7) Begin the filter functionality                                               | ND
 X)
