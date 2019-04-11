@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: normal;
+  src: url('../fonts/NotoSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: bold;
+  src: url('../fonts/NotoSans-Bold.ttf');
+}
