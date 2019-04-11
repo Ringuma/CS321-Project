@@ -1,36 +1,41 @@
 {
-  "name": "Anime Recommendation Extension",
-  "version": "0.1",
-  "description": "For all those weebs who need new anime to watch.",
-  "options_page": "html/options.html",
+  "manifest_version": 2,
 
-  "browser_action":
-  {
-    "default_icon":
-		{
-			"16": "images/small_16.png",
-			"32": "images/big_32.png"
-		},
+  "name": "Anime Recommendation Extension",
+
+  "version": "0.1",
+
+  "description": "For all those weebs who need new anime to watch.",
+
+  "icons": {
+    "16": "images/icon16.png",
+    "24": "images/icon24.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "24": "images/icon24.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "Anime Recommendation Extension",
     "default_popup": "html/popup.html"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["/js/jquery-3.3.1.js", "/js/jquery.csv.js", "/js/recommendation.js"]
-    }
-  ],
-  "background":
-  {
-    "scripts": ["./js/background.js"],
+
+  "background": {
+    "scripts": ["js/background.js"],
     "persistent": false
   },
 
-  "icons":
-	{
-      "16": "images/small_16.png",
-      "32": "images/big_32.png"
-  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["js/jquery-3.3.1.js", "js/jquery.csv.js", "js/recommendation.js"]
+  }],
 
-
-  "manifest_version": 2
+  "options_page": "html/options.html"
 }
