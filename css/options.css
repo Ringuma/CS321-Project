@@ -9,3 +9,9 @@
   font-weight: bold;
   src: url('../fonts/NotoSans-Bold.ttf');
 }
+
+div {
+  padding:20px;
+  background:#eee;
+  font-size:12px
+}
