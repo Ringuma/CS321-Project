@@ -1,15 +1,17 @@
 var timer = {
 	Daily: function(x){ //creates the timer for daily periods.
-		chrome.alarms.create("time", {delayInMinutes: 1.0, periodInMinutes:1439.0});
+		chrome.alarms.clear("time");
+		chrome.alarms.create("time", {delayInMinutes: 1440.0, periodInMinutes:1440.0});
 	},
 	
 	Weekly: function(x){ //creates the timer for weekly periods
-		chrome.alarms.create("time", {delayInMinutes: 1.0, periodInMinutes:10079.0});
+		chrome.alarms.clear("time");
+		chrome.alarms.create("time", {delayInMinutes: 10080.0, periodInMinutes:10080.0});
 	},
 	
 	Monthly: function(x){ //creates the timer for the monthly periods
-		chrome.alarms.create("time", {delayInMinutes: 1.0, periodInMinutes:43799.0});
-		window.close();	
+		chrome.alarms.clear("time");
+		chrome.alarms.create("time", {delayInMinutes: 43800.0, periodInMinutes:43800.0});
 	},
 	Off : function(x){ //removes any active timer.
 		chrome.alarms.clear("time");
