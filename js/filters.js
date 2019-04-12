@@ -8,7 +8,7 @@ function applyFilters() {
   // in order of: Genre, Rating, Studio, Episode Count, Year of Production
   // an entry with no filters selected will just be an empty array
 
-  console.log("in applyFilters");
+  //console.log("in applyFilters");
 
   var filteredData = []; // array to contain filtered set of anime entries
   var animeData = JSON.parse(myStorage.getItem("animeData")); // full anime entry dataset array
@@ -43,7 +43,7 @@ function applyFilters() {
       var entryGenres = animeData[i][3];
 
       for (var j = 0; j < currentFilters[0].length; j++) {
-        if (!(entryGenres.indexOf(currentFilters[0][j]) != -1)) { // index isn't -1, so exists in array
+        if (!(entryGenres.indexOf(currentFilters[0][j]) != -1) || entryGenres.length == 0) { // index isn't -1, so exists in array
           found = false;
         }
       }
@@ -53,11 +53,12 @@ function applyFilters() {
     if (currentFilters[1].length !== 0) {
       console.log("Searching for rating filters..")
       //for (var j = 0; j < currentFilters[1].length; j++) {
+      // BUG, thinks 10 is same as 1, comparing strings?
         var entryRating = animeData[i][10];
         var filterRatingMin = currentFilters[1][0];
-        var filterRatingMax = currentFilters[1][2];
+        var filterRatingMax = currentFilters[1][1];
 
-        if (! (entryRating >= filterRatingMin) & ! (entryRating <= filterRatingMax)) {
+        if (entryRating == "None" || entryRating == 0 || ! (parseFloat(entryRating) >= filterRatingMin) || ! (parseFloat(entryRating) <= filterRatingMax) ) {
           found = false;
         }
       //}
@@ -68,7 +69,7 @@ function applyFilters() {
       var entryStudios = animeData[i][8];
 
       for (var j = 0; j < currentFilters[2].length; j++) {
-        if (!(entryStudios.indexOf(currentFilters[2][j]) != -1)) { // index isn't -1, so exists in array
+        if (!(entryStudios.indexOf(currentFilters[2][j]) != -1) || entryStudios.length == 0) { // index isn't -1, so exists in array
           found = false;
         }
       }
@@ -81,7 +82,7 @@ function applyFilters() {
         var filterCountMin = currentFilters[3][0];
         var filterCountMax = currentFilters[3][1];
 
-        if (! (entryEpCount >= filterCountMin && entryEpCount <= filterCountMax)) {
+        if (entryEpCount == "None" || entryEpCount == 0 || ! (parseFloat(entryEpCount) >= filterCountMin) || ! (parseFloat(entryEpCount) <= filterCountMax)) {
           found = false;
         }
       //}
@@ -94,7 +95,7 @@ function applyFilters() {
         var filterYearMin = currentFilters[4][0];
         var filterYearMax = currentFilters[4][1];
 
-        if (! (entryYear >= filterYearMin && entryYear <= filterYearMax)) {
+        if (entryYear == "None" || entryYear == 0 || ! (parseFloat(entryYear) >= filterYearMin) || ! (parseFloat(entryYear) <= filterYearMax)) {
           found = false;
         }
       //}
@@ -107,7 +108,9 @@ function applyFilters() {
   }
 
   myStorage.setItem("filteredData", JSON.stringify(filteredData));
-  alert("Filters applied! Please refresh your recommendation for changes to be applied.\n" + filteredData);
+  alert("Filters applied! Please refresh your recommendation for changes to be applied.");
+  alert("Filters: " + filteredData);
+  alert(currentFilters);
 }
 
 // checks to see which filter checkboxes are checked when you click "Apply" in the options.html page
@@ -181,7 +184,7 @@ function checkTheBoxes() {
 // parse currently checked filters and save state of checked filters??
 document.getElementsByName("Apply")[0].addEventListener("click", function() {
   parseFilters();
-  applyFilters();
-  checkTheBoxes(); // save state of checked filters here!!!!
+  applyFilters(); // TODO: EXCLUDE CERTAIN FILTERS LIKE HENTAI, ETC
+  checkTheBoxes(); // TODO: IMPLEMENT
   // bla
 });
