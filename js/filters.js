@@ -25,6 +25,7 @@ function applyFilters() {
 
   if (!filtersNotEmpty) {
     myStorage.setItem("filteredData", myStorage.getItem("animeData"));
+    alert("Filters applied! Please refresh your recommendation for changes to be applied.");
     return;
   }
 
@@ -109,8 +110,8 @@ function applyFilters() {
 
   myStorage.setItem("filteredData", JSON.stringify(filteredData));
   alert("Filters applied! Please refresh your recommendation for changes to be applied.");
-  alert("Filters: " + filteredData);
-  alert(currentFilters);
+  //alert("Filters: " + filteredData);
+  //alert(currentFilters);
 }
 
 // checks to see which filter checkboxes are checked when you click "Apply" in the options.html page
@@ -176,15 +177,24 @@ function parseFilters() {
   myStorage.setItem("currentFilters", JSON.stringify(filterArray));
 }
 
+// records the state of the checked boxes on the page
+function recordCheckedBoxes() {
+  
+}
+
 // recalls previous state of checked boxes and rechecks them upon opening the Settings page
 function checkTheBoxes() {
 
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  checkTheBoxes();
+});
+
 // parse currently checked filters and save state of checked filters??
 document.getElementsByName("Apply")[0].addEventListener("click", function() {
   parseFilters();
   applyFilters(); // TODO: EXCLUDE CERTAIN FILTERS LIKE HENTAI, ETC
-  checkTheBoxes(); // TODO: IMPLEMENT
+  // TODO: IMPLEMENT
   // bla
 });
