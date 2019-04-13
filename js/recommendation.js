@@ -29,7 +29,6 @@ function loadData(callback) {
       success: function(data) {
           var spreadsheetData = $.csv.toArrays(data);
 
-          // sets localStorage item "animeData" to the stringified 2D array parsed from the spreadsheet
           myStorage.setItem("animeData", JSON.stringify(spreadsheetData));
 
           // "filteredData" is a subset of "animeData" that only includes entries that match the current selection of Filters
@@ -51,16 +50,50 @@ function loadData(callback) {
           var filters = [];
           myStorage.setItem("currentFilters", JSON.stringify(filters));
 
-          //computeRecommendation(); // computes initial recommendation
+          // removes blacklisted filters from localStorage
+          excludeFilters( function() {
+            callback();
+          });
 
       },
       error: function (request, status, error) {
           alert(request.responseText);
       }
    });
-   callback();
+
+
 }
 
+
+function excludeFilters(callback) {
+  var excludedFilters = ["Hentai", "Ecchi", "Shoujo Ai", "Shounen Ai", "Yaoi", "Yuri"];
+  var newDataSet = [];
+  var dataSet = JSON.parse(myStorage.getItem("animeData"));
+
+  for (var i = 0; i < dataSet.length; i++) {
+    var found = false;
+
+    for (var j = 0; j < excludedFilters.length; j++) {
+      // if "bad" filter is found, breaks out of loop
+      if (dataSet[i][3].indexOf(excludedFilters[j]) !== -1) {
+        found = true;
+        break;
+      }
+    }
+
+    // if "bad" filter not found, adds to new dataset
+    if (!found) {
+      newDataSet.push(dataSet[i]);
+    }
+  }
+
+  //store newDataSet;
+  myStorage.setItem("animeData", JSON.stringify(newDataSet));
+  myStorage.setItem("filteredData", JSON.stringify(newDataSet));
+  //alert(myStorage.getItem("animeData"));
+  //alert(myStorage.getItem("filteredData"));
+  callback();
+}
 
 
 // this function computes a random recommendation based on given inputs
@@ -72,7 +105,7 @@ function computeRecommendation(callback) {
   // check if filteredData is empty------------------------------------------------
   if (animeData.length == 0) {
     myStorage.setItem("emptyDataSet", true);
-    displayRec(); // returns before displaying rec?
+    displayRec();
   }
   else {
     myStorage.setItem("emptyDataSet", false);
