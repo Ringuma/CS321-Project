@@ -29,6 +29,10 @@ h2 {
   font-size: 25px;
 }
 
+.checkbox-columns {
+  columns: 50px 2;
+}
+
 .slider {
   -webkit-appearance: none;
   height: 15px;
