@@ -29,8 +29,27 @@ h2 {
   font-size: 25px;
 }
 
-div {
-  padding:20px;
-  background:#eee;
-  font-size:12px
+.slider {
+  -webkit-appearance: none;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.5;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: url('../images/icon32.png');
+  cursor: pointer;
 }
