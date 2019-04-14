@@ -10,6 +10,25 @@
   src: url('../fonts/NotoSans-Bold.ttf');
 }
 
+* {
+  font-family: 'Noto Sans' !important;
+}
+
+body {
+  font-weight: normal;
+  font-size: 15px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 25px;
+}
+
 div {
   padding:20px;
   background:#eee;
