@@ -42,6 +42,16 @@ h2 {
 
 .slider:hover {
   opacity: 1;
+  animation: sharingan 5s linear infinite;
+}
+
+@keyframes sharingan {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .slider::-webkit-slider-thumb {
