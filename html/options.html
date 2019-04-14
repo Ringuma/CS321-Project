@@ -6,10 +6,7 @@
   </head>
   <body>
     <h1>Filters</h1>
-
-    <p>Please check the different filters you would like your recommendation to be based on.<p>
-
-    <h3>Genre</h3>
+    <h2>Genre</h2>
     <input type="checkbox" name="genre1" value="Action"> Action <input type="checkbox" name="genre2" value="Adventure"> Adventure
     <input type="checkbox" name="genre3" value="Cars"> Cars <input type="checkbox" name="genre4" value="Comedy"> Comedy
     <input type="checkbox" name="genre5" value="Dementia"> Dementia<br>
@@ -33,14 +30,14 @@
     <input type="checkbox" name="genre35" value="Thriller"> Thriller<br>
     <input type="checkbox" name="genre36" value="Vampire"> Vampire<br>
 
-    <h3>Rating</h3>
+    <h2>Rating</h2>
     <input type="checkbox" name="rating1" value1="1" value2="2"> 1-2<br>
     <input type="checkbox" name="rating2" value1="3" value2="4"> 3-4<br>
     <input type="checkbox" name="rating3" value1="5" value2="6"> 5-6<br>
     <input type="checkbox" name="rating4" value1="7" value2="8"> 7-8<br>
     <input type="checkbox" name="rating5" value1="9" value2="10"> 9-10
 
-    <h3>Studio</h3>
+    <h2>Studio</h2>
     <input type="checkbox" name="studio1" value="Toei Animation"> Toei Animation<input type="checkbox" name="studio2" value="Sunrise"> Sunrise
     <input type="checkbox" name="studio3" value="Madhouse"> Madhouse<input type="checkbox" name="studio4" value="Production I.G"> Production I.G
     <input type="checkbox" name="studio5" value="J.C.Staff"> J.C.Staff<br>
@@ -63,13 +60,13 @@
     <input type="checkbox" name="studio41" value="Lerche"> Lerche<input type="checkbox" name="studio42" value="TNK"> TNK<input type="checkbox" name="studio43" value="Artland"> Artland
     <input type="checkbox" name="studio44" value="Ajia-Do"> Ajia-Do<input type="checkbox" name="studio45" value="Wit Studio"> Wit Studio<br>
 
-    <h3>Episode Count</h3>
+    <h2>Episode Count</h2>
     <input type="checkbox" name="ecount1" value1="1" value2="10"> 1-10<br>
     <input type="checkbox" name="ecount2" value1="10" value2="20"> 10-20<br>
     <input type="checkbox" name="ecount3" value1="20" value2="30"> 20-30<br>
     <input type="checkbox" name="ecount4" value1="30" value2="999999"> 30+
 
-    <h3>Year of Production</h3>
+    <h2>Year of Production</h2>
     <input type="checkbox" name="year0" value1="0" value2="2000"> Before 2000<br>
     <input type="checkbox" name="year1" value1="2000" value2="2003"> 2000-2003<br>
     <input type="checkbox" name="year2" value1="2004" value2="2006"> 2004-2006<br>
@@ -85,12 +82,12 @@
     <input type="radio" name="Frequency3" value="Monthly"> Monthly
 
     <h1>Accessibility</h1>
-    <h3>Font Size</h3>
-    <div>The text in <span>12</span>px: this is the size</div>
-    <br>
-    <br>
-    <input type="range" min="10" max="20"> 
-    <h3>Color Scheme</h3>
+    <h2>Font Size</h2>
+    <div class="slidecontainer">
+      <input type="range" min="10" max="20" value="15" class="slider" id="sizeSlider">
+      <p>Value: <span id="fontSize"></span></p>
+    </div>
+    <h2>Color Scheme</h2>
 
     <input type="submit" name="Apply" value="Apply">
   </body>
