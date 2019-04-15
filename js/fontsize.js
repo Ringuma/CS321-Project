@@ -22,10 +22,9 @@ function applyFontSize() {
   myStorage.setItem("fontSize", sizeValue);
   // get the saved fontSize value from the localStorage and apply it to the body of the html
   // basically sets the <body style="font-size:fontSize"> html tags with the style changed
-  document.body.style.fontSize = myStorage.getItem("fontSize");
+  document.body.style.fontSize = myStorage.getItem("fontSize") + "px";
 }
 // add event listener to apply button and run the applyFontSize() function
-// used from Tanya but not sure why its not working
 document.getElementsByName("Apply")[0].addEventListener("click", function() {
   applyFontSize();
 });
