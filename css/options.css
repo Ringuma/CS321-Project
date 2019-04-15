@@ -30,13 +30,13 @@ h2 {
 }
 
 .checkbox-columns {
-  columns: 50px 2;
+  columns: 25px 2;
 }
 
 .slider {
   -webkit-appearance: none;
   height: 15px;
-  border-radius: 5px;
+  border-radius: 15px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.5;
