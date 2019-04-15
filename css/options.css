@@ -9,3 +9,52 @@
   font-weight: bold;
   src: url('../fonts/NotoSans-Bold.ttf');
 }
+
+* {
+  font-family: 'Noto Sans' !important;
+}
+
+body {
+  font-weight: normal;
+  font-size: 15px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.checkbox-columns {
+  width: 50%;
+  column-count: 2;
+}
+
+.slider {
+  -webkit-appearance: none;
+  height: 15px;
+  border-radius: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.5;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: url('../images/icon32.png');
+  cursor: pointer;
+}
