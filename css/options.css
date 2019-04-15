@@ -30,8 +30,8 @@ h2 {
 }
 
 .checkbox-columns {
-  column-count: 3;
-  column-gap: 40px;
+  width: 50%;
+  column-count: 2;
 }
 
 .slider {
