@@ -1,4 +1,6 @@
 function applyColorScheme() {
+  var myStorage = window.localStorage;
+
   colorChosen = document.querySelector('input[name="colors"]:checked').value;
   myStorage.setItem("color", colorChosen);
 }
