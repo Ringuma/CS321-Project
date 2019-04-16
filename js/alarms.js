@@ -1,16 +1,13 @@
 var timer = {
 	Daily: function(x){ //creates the timer for daily periods.
-		chrome.alarms.clear("time");
 		chrome.alarms.create("time", {delayInMinutes: 1440.0, periodInMinutes:1440.0});
 	},
 	
 	Weekly: function(x){ //creates the timer for weekly periods
-		chrome.alarms.clear("time");
 		chrome.alarms.create("time", {delayInMinutes: 10080.0, periodInMinutes:10080.0});
 	},
 	
 	Monthly: function(x){ //creates the timer for the monthly periods
-		chrome.alarms.clear("time");
 		chrome.alarms.create("time", {delayInMinutes: 43800.0, periodInMinutes:43800.0});
 	},
 	Off : function(x){ //removes any active timer.
