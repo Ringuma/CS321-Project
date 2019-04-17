@@ -16,17 +16,17 @@
 
 body {
   font-weight: normal;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 32px;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 24px;
 }
 
 .checkbox-columns {
@@ -36,25 +36,24 @@ h2 {
 
 .slider {
   -webkit-appearance: none;
-  height: 15px;
-  border-radius: 15px;
-  background: #d3d3d3;
+  height: 16px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #000000;
+  border-radius: 128px;
+  background: #000000;
   outline: none;
-  opacity: 0.5;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-
-.slider:hover {
-  opacity: 1;
 }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 32px;
-  height: 32px;
-  border: 0;
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #000000;
+  border-radius: 128px;
   background: url('../images/icon32.png');
   cursor: pointer;
 }
