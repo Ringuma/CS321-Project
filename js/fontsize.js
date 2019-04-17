@@ -6,16 +6,13 @@ var slider = document.getElementById("sizeSlider");
 var output = document.getElementById("fontSize");
 
 // check if the user has set the font size before
-// if the user has never used the font slider before then set the default value as 15
-// else if the user already set a specified font size,
-// then set the slider to that saved value and keep the font size of the document
-// as whatever size was last applied
+// if the user has never used the font slider before then set the default value as 16
 if (myStorage.getItem("fontSize") === null) {
-  slider.value = 15;
-} else {
-  slider.value = myStorage.getItem("fontSize");
-  document.body.style.fontSize = myStorage.getItem("fontSize") + "px";
+  myStorage.setItem("fontSize", 16);
 }
+
+slider.value = myStorage.getItem("fontSize");
+document.body.style.fontSize = myStorage.getItem("fontSize") + "px";
 
 // get the value from the slider and have the html display the value
 output.innerHTML = slider.value;
