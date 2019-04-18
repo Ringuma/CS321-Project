@@ -1,14 +1,16 @@
 function applyColorScheme() {
-  var myStorage = window.localStorage;
-
   var colorChosen = document.querySelector('input[name="colors"]:checked').value;
-  myStorage.setItem("color", colorChosen);
-  colorChosen = myStorage.getItem("color");
+  var colorSheet = document.getElementById("colorsheet");
+
+  window.localStorage.setItem("color", colorChosen);
+
   switch (colorChosen) {
     default:
     case "color1":
+      colorSheet.setAttribute("href", "../css/color1.css");
       break;
     case "color2":
+      colorSheet.setAttribute("href", "../css/color2.css");
       break;
     case "color3":
       break;
