@@ -1,0 +1,13 @@
+body {
+  color: #f9d342;
+  background-color: #292826;
+}
+
+.slider {
+  border-color: #c2a200;
+  background-color: #ffff75;
+}
+
+.slider::-webkit-slider-thumb {
+  border-color: #c2a200;
+}
