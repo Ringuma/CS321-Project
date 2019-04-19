@@ -1,15 +1,8 @@
-var myStorage = window.localStorage;
+var myStorage = window.localStorage; // reference to localStorage
 
 // applies filters in this fashion:
-// if an entry matches one or more filters, add to "filteredData" array
-function applyFilters() {
-  // a 2D array representing current Filters
-  // has 5 entries, each entry corresponding to an array of filters from that section
-  // in order of: Genre, Rating, Studio, Episode Count, Year of Production
-  // an entry with no filters selected will just be an empty array
-
-  //console.log("in applyFilters");
-
+// if an entry matches all filters, add to "filteredData" array
+function applyFilters(callback) {
   var filteredData = []; // array to contain filtered set of anime entries
   var animeData = JSON.parse(myStorage.getItem("animeData")); // full anime entry dataset array
   var currentFilters = JSON.parse(myStorage.getItem("currentFilters")); // current chosen filters
@@ -23,19 +16,20 @@ function applyFilters() {
     }
   }
 
+  // checks for no selected filters
   if (!filtersNotEmpty) {
     myStorage.setItem("filteredData", myStorage.getItem("animeData"));
     alert("Filters applied! Please refresh your recommendation for changes to be applied.");
+    callback();
     return;
   }
 
-  // if not empty, searches through "animeData" and adds each matching entry to "filteredData"
-  // checks if each index of "currentFilters" contains data (not just []), and if it does,
-  // searches that index in "animeData" for matches
-  // operates on the logic where if the entry matches 1 or more filters, it will be added to the filterArray
-  // brute force method, needs to be optimized
+  /* if not empty, searches through "animeData" and adds each matching entry to "filteredData"
+     checks if each index of "currentFilters" contains data (not just []), and if it does,
+     searches that index in "animeData" for matches
+     operates on the logic where if the entry matches 1 or more filters, it will be added to the filterArray
+     brute force method, needs to be optimized */
   for (var i = 1; i < animeData.length; i++) { // starts at index 1 because index 0 is table header
-
     // only adds anime to "filteredData" if it matches all selected filters
     var found = true;
 
@@ -53,16 +47,13 @@ function applyFilters() {
     // rating------------------------------------------------------------------------------------------------
     if (currentFilters[1].length !== 0) {
       console.log("Searching for rating filters..")
-      //for (var j = 0; j < currentFilters[1].length; j++) {
-      // BUG, thinks 10 is same as 1, comparing strings?
-        var entryRating = animeData[i][10];
-        var filterRatingMin = currentFilters[1][0];
-        var filterRatingMax = currentFilters[1][1];
+      var entryRating = animeData[i][10];
+      var filterRatingMin = currentFilters[1][0];
+      var filterRatingMax = currentFilters[1][1];
 
-        if (entryRating == "None" || entryRating == 0 || ! (parseFloat(entryRating) >= filterRatingMin) || ! (parseFloat(entryRating) <= filterRatingMax) ) {
-          found = false;
-        }
-      //}
+      if (entryRating == "None" || entryRating == 0 || ! (parseFloat(entryRating) >= filterRatingMin) || ! (parseFloat(entryRating) <= filterRatingMax) ) {
+        found = false;
+      }
     }
 
     // studio-------------------------------------------------------------------------------------------------
@@ -78,28 +69,24 @@ function applyFilters() {
 
     // ep count-------------------------------------------------------------------------------------------------
     if (currentFilters[3].length !== 0) {
-      //for (var j = 0; j < currentFilters[3].length; j++) {
-        var entryEpCount = animeData[i][5];
-        var filterCountMin = currentFilters[3][0];
-        var filterCountMax = currentFilters[3][1];
+      var entryEpCount = animeData[i][5];
+      var filterCountMin = currentFilters[3][0];
+      var filterCountMax = currentFilters[3][1];
 
-        if (entryEpCount == "None" || entryEpCount == 0 || ! (parseFloat(entryEpCount) >= filterCountMin) || ! (parseFloat(entryEpCount) <= filterCountMax)) {
-          found = false;
-        }
-      //}
+      if (entryEpCount == "None" || entryEpCount == 0 || ! (parseFloat(entryEpCount) >= filterCountMin) || ! (parseFloat(entryEpCount) <= filterCountMax)) {
+        found = false;
+      }
     }
 
     // year-------------------------------------------------------------------------------------------------
     if (currentFilters[4].length !== 0) {
-      //for (var j = 0; j < currentFilters[4].length; j++) {
-        var entryYear = animeData[i][2].split(" ")[1];
-        var filterYearMin = currentFilters[4][0];
-        var filterYearMax = currentFilters[4][1];
+      var entryYear = animeData[i][2].split(" ")[1];
+      var filterYearMin = currentFilters[4][0];
+      var filterYearMax = currentFilters[4][1];
 
-        if (entryYear == "None" || entryYear == 0 || ! (parseFloat(entryYear) >= filterYearMin) || ! (parseFloat(entryYear) <= filterYearMax)) {
-          found = false;
-        }
-      //}
+      if (entryYear == "None" || entryYear == 0 || ! (parseFloat(entryYear) >= filterYearMin) || ! (parseFloat(entryYear) <= filterYearMax)) {
+        found = false;
+      }
     }
 
     // passed all tests?-------------------------------------------------------------------------------------------------
@@ -110,8 +97,7 @@ function applyFilters() {
 
   myStorage.setItem("filteredData", JSON.stringify(filteredData));
   alert("Filters applied! Please refresh your recommendation for changes to be applied.");
-  //alert("Filters: " + filteredData);
-  //alert(currentFilters);
+  callback();
 }
 
 // checks to see which filter checkboxes are checked when you click "Apply" in the options.html page
@@ -177,14 +163,32 @@ function parseFilters() {
   myStorage.setItem("currentFilters", JSON.stringify(filterArray));
 }
 
-// records the state of the checked boxes on the page
+// records the state of the checked boxes on the page, stores 1D array for simpler matching in checkTheBoxes()
+// saves the names of the previously checked boxes, as each name is unique
 function recordCheckedBoxes() {
-  
+  var currentCheckedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
+  var checkedBoxesNames = [];
+
+  for (var i = 0; i < currentCheckedBoxes.length; i++) {
+    checkedBoxesNames.push(currentCheckedBoxes[i].name);
+  }
+
+  myStorage.setItem("checkedBoxes", JSON.stringify(checkedBoxesNames));
+  alert("Boxes checked: " + checkedBoxesNames);
 }
 
 // recalls previous state of checked boxes and rechecks them upon opening the Settings page
 function checkTheBoxes() {
+  if ((myStorage.getItem("checkedBoxes") != null) || (JSON.parse(myStorage.getItem("checkedBoxes")).length != 0)) {
+    var allCheckboxes = document.querySelectorAll('input[type=checkbox]');
+    var previouslyCheckedBoxes = JSON.parse(myStorage.getItem("checkedBoxes"));
 
+    for (var i = 0; i < allCheckboxes.length; i++) {
+      if (previouslyCheckedBoxes.indexOf(allCheckboxes[i].name) !== -1) { // if box was previously checked
+        document.getElementsByName(allCheckboxes[i].name)[0].checked = true; // checks them
+      }
+    }
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -194,7 +198,5 @@ document.addEventListener("DOMContentLoaded", function() {
 // parse currently checked filters and save state of checked filters??
 document.getElementsByName("Apply")[0].addEventListener("click", function() {
   parseFilters();
-  applyFilters(); // TODO: EXCLUDE CERTAIN FILTERS LIKE HENTAI, ETC
-  // TODO: IMPLEMENT
-  // bla
+  applyFilters(recordCheckedBoxes);
 });
