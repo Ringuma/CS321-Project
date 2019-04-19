@@ -3,7 +3,7 @@ chrome.runtime.onInstalled.addListener(function(){ //automatically sets a daily 
 });
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
-  alert("You have a new recommendation! Check the pop-up to view it.");
+  alert("You have a new recommendation! Check the pop-up to view it.  If pop-up is already open, please close and reopen it.");
   var nex = "there"; //nex is the message being sent to the recommendation.js to determine if a new recommendation is computed or not
   chrome.runtime.onConnect.addListener(function(port){
   	port.postMessage({check:nex});
