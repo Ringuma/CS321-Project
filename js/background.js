@@ -1,5 +1,7 @@
 chrome.runtime.onInstalled.addListener(function(){ //automatically sets a daily frequency when the extension is first installed.
-		chrome.alarms.create("time", {delayInMinutes: 1440.0, periodInMinutes:1440.0});
+	chrome.alarms.create("time", {delayInMinutes: 1440.0, periodInMinutes:1440.0});
+	alert("Thank you for installing or updating Anime Recommendation Extension! The Recommendation Frequency is set to Daily.");
+
 });
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
