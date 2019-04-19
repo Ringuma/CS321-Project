@@ -10,6 +10,9 @@ var timer = {
 	Monthly: function(x){ //creates the timer for the monthly periods
 		chrome.alarms.create("time", {delayInMinutes: 43800.0, periodInMinutes:43800.0});
 	},
+	Tester : function(x){ //tester creates an alarm that goes off every 30 seconds
+		chrome.alarms.create("time", {delayInMinutes: 1.0, periodInMinutes:1.0});
+	},
 	Off : function(x){ //removes any active timer.
 		chrome.alarms.clear("time");
 	},
@@ -20,6 +23,8 @@ var timer = {
 		t.addEventListener('click', timer.Weekly);
 		var t = document.getElementById('monthly');
 		t.addEventListener('click', timer.Monthly);
+		var t = document.getElementById('test'); //adds a event listener to allow for test to timer
+		t.addEventListener('click', timer.Tester );
 		var t = document.getElementById('off');
 		t.addEventListener('click', timer.Off);
 	}
