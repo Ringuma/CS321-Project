@@ -1,20 +1,25 @@
 var timer = {
-	Daily: function(x){ //creates the timer for daily periods.
+	Daily : function(x){ //sets the alrarm to a daily cycle
 		chrome.alarms.create("time", {delayInMinutes: 1440.0, periodInMinutes:1440.0});
+		alert("Daily Frequency On");
 	},
 	
-	Weekly: function(x){ //creates the timer for weekly periods
+	Weekly : function(x){ //sets the alarm to a weekly cycle
 		chrome.alarms.create("time", {delayInMinutes: 10080.0, periodInMinutes:10080.0});
+		alert("Weekly Frequency On");
 	},
 	
-	Monthly: function(x){ //creates the timer for the monthly periods
-		chrome.alarms.create("time", {delayInMinutes: 43800.0, periodInMinutes:43800.0});
+	Monthly : function(x){ //sets the alarm to a monthly (30 day) cycle
+		chrome.alarms.create("time", {delayInMinutes: 438000.0, periodInMinutes:43800.0});
+		alert("Monthly Frequency On");
 	},
 	Tester : function(x){ //tester creates an alarm that goes off every 30 seconds
-		chrome.alarms.create("time", {delayInMinutes: 1.0, periodInMinutes:1.0});
+		chrome.alarms.create("time", {delayInMinutes: 0.1, periodInMinutes:0.2});
+		alert("Test Frequency On");
 	},
-	Off : function(x){ //removes any active timer.
+	Off : function(x){ //turns the alarm off
 		chrome.alarms.clear("time");
+		alert("Recommendation Frequency Off");
 	},
 	setup: function(){ //setups which function is performed based on the id of the button in options.html
 		var t = document.getElementById('daily');
