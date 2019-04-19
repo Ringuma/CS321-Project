@@ -1,9 +1,9 @@
+
 var myStorage = window.localStorage;
 var spreadsheetURL = "../data/myAnimeListData.csv";
 
 // event listener that displays recommendation upon opening of popup
 document.addEventListener("DOMContentLoaded", function(){
-
   // load dataset  when popup opens for the first time
   if (myStorage.getItem("initialized") !== "true") {
     loadData( function() {
