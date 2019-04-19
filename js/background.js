@@ -4,9 +4,9 @@ chrome.runtime.onInstalled.addListener(function(){ //automatically sets a daily 
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
   alert("You have a new recommendation! Check the pop-up to view it.");
-  chrome.runtime.onMessage.addListener( //responds to a message from recommendation.js
-	function(request, sender, sendResponse){
-			if(request.check == "here")
-				sendResponse({call: "there"});
-	});
+  var nex = "there"; //nex is the message being sent to the recommendation.js to determine if a new recommendation is computed or not
+  chrome.runtime.onConnect.addListener(function(port){
+  	port.postMessage({check:nex});
+  	nex = "wait"; //nex is changed until the next time the timer goes off
+   });
 });
