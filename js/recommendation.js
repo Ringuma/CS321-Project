@@ -97,11 +97,9 @@ function excludeFilters(callback) {
     }
   }
 
-  //store newDataSet;
+  //store newDataSet
   myStorage.setItem("animeData", JSON.stringify(newDataSet));
   myStorage.setItem("filteredData", JSON.stringify(newDataSet));
-  //alert(myStorage.getItem("animeData"));
-  //alert(myStorage.getItem("filteredData"));
   callback();
 }
 
@@ -110,7 +108,6 @@ function excludeFilters(callback) {
 function computeRecommendation(callback) {
   // 2d array that represents current dataset for anime
   var animeData = JSON.parse(myStorage.getItem("filteredData"));
-  //alert(animeData[0]);
 
   // check if filteredData is empty------------------------------------------------
   if (animeData.length == 0) {
@@ -158,5 +155,4 @@ function displayRec() {
       <p>Studio: ${recommendation[6]}</p>
       <a target=\"_blank\" href=\"https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}\">MAL Link.</a>`;
     }
-    //callback();
 }

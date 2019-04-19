@@ -174,7 +174,6 @@ function recordCheckedBoxes() {
   }
 
   myStorage.setItem("checkedBoxes", JSON.stringify(checkedBoxesNames));
-  alert("Boxes checked: " + checkedBoxesNames);
 }
 
 // recalls previous state of checked boxes and rechecks them upon opening the Settings page
