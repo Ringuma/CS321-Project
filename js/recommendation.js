@@ -11,11 +11,8 @@ document.addEventListener("DOMContentLoaded", function(){
     }); // loads dataset, which then calls computeRecommendation(), which then calls displayRec()
   }
   else {
-    // displays previous recommendation and updates to a new recommendation when the alarm goes off
+    // displays previous recommendation
     displayRec();
-	  chrome.alarms.onAlarm.addListener(function(alarm) {
-		    computeRecommendation(displayRec);
-		});
   }
 }, false);
 
