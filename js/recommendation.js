@@ -11,9 +11,19 @@ document.addEventListener("DOMContentLoaded", function(){
     }); // loads dataset, which then calls computeRecommendation(), which then calls displayRec()
   }
   else {
-    displayRec(); // displays previous recommendation
+    // displays previous recommendation
+    displayRec();
   }
 }, false);
+
+var port = chrome.runtime.connect({name:"timer"}); //create a responder to message sent from the background.js
+port.onMessage.addListener(function(message,sender){
+  if(message.check == "there"){ //if the message from background.js is "there", a new recommendation is computed. Otherwise, it will display the previous recommendation.
+	computeRecommendation(displayRec);
+  }else{
+	displayRec();
+  }
+});
 
 // event listener that computes a new recommendation upon clicking the refresh button
 document.getElementById("refresh_button").addEventListener("click", function() {
