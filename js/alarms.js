@@ -14,7 +14,7 @@ var timer = {
 		alert("Monthly Frequency On");
 	},
 	Tester : function(x){ //tester creates an alarm that goes off every 30 seconds
-		chrome.alarms.create("time", {delayInMinutes: 0.1, periodInMinutes:0.2});
+		chrome.alarms.create("time", {delayInMinutes: 0.3, periodInMinutes:0.3});
 		alert("Test Frequency On");
 	},
 	Off : function(x){ //turns the alarm off
