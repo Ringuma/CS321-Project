@@ -60,6 +60,9 @@ function loadData(callback) {
           var filters = [];
           myStorage.setItem("currentFilters", JSON.stringify(filters));
 
+          // initializes recommendation image to null
+          myStorage.setItem("recommendationImage", "null");
+
           // removes blacklisted filters from localStorage
           excludeFilters( function() {
             callback();
@@ -109,10 +112,13 @@ function computeRecommendation(callback) {
   // 2d array that represents current dataset for anime
   var animeData = JSON.parse(myStorage.getItem("filteredData"));
 
+  console.log(myStorage.getItem("filteredData"));
+
   // check if filteredData is empty------------------------------------------------
-  if (animeData.length == 0) {
+  if (animeData == undefined || animeData.length == 0) {
     myStorage.setItem("emptyDataSet", true);
     displayRec();
+    return;
   }
   else {
     myStorage.setItem("emptyDataSet", false);
@@ -141,9 +147,15 @@ function displayRec() {
       `<h1>I'm Sorry</h1>
       <p>There is no anime that matches your choice of filters.
       Please go to the Settings page and choose a different set of filters.</p>`;
-    }
+      // default image
+      document.getElementById("cover_art").innerHTML =
+      `<img src="https://media.giphy.com/media/j0eyAxbJ53mMM/giphy.gif">
+      </img>`;
+      }
+
     else {
       var recommendation = JSON.parse(myStorage.getItem("recommendation"));
+      var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}`;
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
       `<h1>Your Recommendation</h1>
@@ -153,6 +165,45 @@ function displayRec() {
       <p>Rating: ${recommendation[4]}</p>
       <p>Episode Count: ${recommendation[5]}</p>
       <p>Studio: ${recommendation[6]}</p>
-      <a target=\"_blank\" href=\"https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}\">MAL Link.</a>`;
+      <a target=\"_blank\" href=${animeURL}>MAL Link.</a>`;
+
+      //changes popup image to match current recommendation
+      // if null, display default image?
+      getImageURL(animeURL, function() {
+        if (myStorage.getItem("recommendationImage") != "null") { // anime cover art
+          document.getElementById("cover_art").innerHTML =
+          `<img src="${myStorage.getItem("recommendationImage")}">
+          </img>`;
+        }
+      });
     }
+}
+
+function getImageURL(animeURL, callback) {
+    var url = animeURL;
+    var malHTML = "";
+    var imageURL = "";
+
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET", animeURL, false);
+    xmlhttp.send();
+    var malHTML = xmlhttp.responseText;
+
+    console.log(malHTML);
+
+    var dom_nodes = $($.parseHTML(malHTML));
+    var allImages = dom_nodes.contents().find('img');
+    var alt = JSON.parse(myStorage.getItem("recommendation"))[0]; // alt is title of anime
+
+    for (var i = 0; i < allImages.length; i++) {
+        if (allImages[i].alt == alt) {
+            imageURL = allImages[i].src;
+            break;
+        }
+    }
+
+    myStorage.setItem("recommendationImage", imageURL);
+
+    console.log(imageURL);
+    callback();
 }

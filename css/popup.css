@@ -1,25 +1,25 @@
 #wrapper1 {
-  height: 120px;
+  height: 150px;
   width: 270px;
   margin-top: 0;
   overflow: hidden;
 }
 
 #cover_art {
-  height:100px;
+  height:150px;
   width: 100px;
   float: left;
   background-color: gray;
 }
 
 #cover_art > img {
-  height: 100px;
+  height: 150px;
   width: 100px;
 }
 
 #description {
   width: 155px;
-  height: 120px;
+  height: 150px;
   vertical-align: top;
   float: right;
   overflow-y: auto;
