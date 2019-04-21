@@ -3,7 +3,7 @@ if (window.localStorage.getItem("color") === null) {
 }
 
 var savedColor = window.localStorage.getItem("color");
-if (savedColor != null) {
+if (document.getElementById(savedColor) != null) {
   document.getElementById(savedColor).checked = true;
 }
 applyColorScheme();
