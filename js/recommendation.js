@@ -180,14 +180,6 @@ function displayRec() {
 }
 
 function getImageURL(animeURL, callback) {
-  /*
-  requirejs.config({
-    baseUrl: `chrome://extensions/?id=eledgdfangfkebmhhiegeldemeogcbjl/node_modules`
-});
-    const malScraper = require(['/mal-scraper/'], function() {
-      alert("Hello!");
-    });
-    */
     var url = animeURL;
     var malHTML = "";
     var imageURL = "";
@@ -196,10 +188,6 @@ function getImageURL(animeURL, callback) {
     xmlhttp.open("GET", animeURL, false);
     xmlhttp.send();
     var malHTML = xmlhttp.responseText;
-    //$.get(url, function( data ) {
-    //  malHTML = data;
-        // my_var contains whatever that request returned
-    //}, 'html');
 
     console.log(malHTML);
 
@@ -214,23 +202,8 @@ function getImageURL(animeURL, callback) {
         }
     }
 
-
-
-    //var animeObject = null;
-
-    //malScraper.getInfoFromURL(url)
-    //.then((data) => (animeObject = data))
-    //.catch((err) => console.log(err))
-
-    //if (animeObject.picture != undefined) {
     myStorage.setItem("recommendationImage", imageURL);
 
     console.log(imageURL);
-    //}
-    //else {
-    //  myStorage.setItem("recommendationImage", null);
-    //}
-
-  //});
-  callback();
+    callback();
 }
