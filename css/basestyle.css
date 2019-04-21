@@ -54,3 +54,71 @@ h2 {
   background-image: url('../images/icon32.png');
   cursor: pointer;
 }
+
+#wrapper1 {
+  height: 150px;
+  width: 270px;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+#cover_art {
+  height:150px;
+  width: 100px;
+  float: left;
+  background-color: gray;
+}
+
+#cover_art > img {
+  height: 150px;
+  width: 100px;
+}
+
+#description {
+  width: 155px;
+  height: 150px;
+  vertical-align: top;
+  float: right;
+  overflow-y: auto;
+}
+
+#description > h1 {
+  margin: 2px;
+}
+
+#description > p {
+  line-height: 100%;
+  margin: 3px;
+}
+
+#footer {
+  height: 10px;
+  width: 252px;
+  padding: 15px;
+  overflow: hidden;
+}
+
+#refresh_button {
+  height: 20px;
+  width: 20px;
+  background-color: brown;
+  vertical-align: text-bottom;
+  float: right;
+}
+
+#settings > a:link {
+  color: midnightblue;
+  float: left;
+}
+
+#settings > a:visited {
+  color: midnightblue;
+}
+
+#settings > a:hover {
+  color: aquamarine;
+}
+
+#settings > a:active {
+  color: greenyellow;
+}
