@@ -33,6 +33,8 @@ function applyFontSize() {
   document.body.style.fontSize = window.localStorage.getItem("fontSize") + "px";
 }
 // add event listener to apply button and run the applyFontSize() function
-document.getElementsByName("Apply")[0].addEventListener("click", function() {
-  applyFontSize();
-});
+if (document.getElementsByName("Apply")[0] != null) {
+  document.getElementsByName("Apply")[0].addEventListener("click", function() {
+    applyFontSize();
+  });
+}
