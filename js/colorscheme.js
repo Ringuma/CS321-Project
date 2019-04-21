@@ -3,9 +3,9 @@ if (window.localStorage.getItem("color") === null) {
 }
 
 var savedColor = window.localStorage.getItem("color");
-
-document.getElementById(savedColor).checked = true;
-
+if (savedColor != null) {
+  document.getElementById(savedColor).checked = true;
+}
 applyColorScheme();
 
 function applyColorScheme() {
