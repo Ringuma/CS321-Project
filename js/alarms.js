@@ -4,7 +4,7 @@ var timer = {
 		var nextFire = moment([moment().year(), moment().month(), moment().date(), 23, 59, 59, 999]);
 		var intervalInMinutes = 1440.0;
 
-		alert(moment().format("dddd, MMMM Do YYYY, h:mm:ss a") + " " + nextFire.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+		//alert(moment().format("dddd, MMMM Do YYYY, h:mm:ss a") + " " + nextFire.format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
 		var delay = nextFire.diff(moment(), "minutes", true);
 
@@ -12,19 +12,19 @@ var timer = {
 			delay += 1440;
 		}
 
-		alert(delay);
+		//alert(delay);
 
 		chrome.alarms.create("time", {delayInMinutes: delay, periodInMinutes: intervalInMinutes});
 		alert("Daily Frequency On");
 	},
 
 	Weekly : function(x){ //sets the alarm to a weekly cycle
-		var daysUntilSunday = 7 - moment().day(); // day() represents what day of the week, 0-6
+		var daysUntilSunday = 6 - moment().day(); // day() represents what day of the week, 0-6
 		// "days" part of array will overflow into months if next sunday is next month
 		var nextFire = moment([moment().year(), moment().month(), moment().date() + daysUntilSunday, 23, 59, 59, 999]);
 		var intervalInMinutes = 10080.0;
 
-		alert(moment().format("dddd, MMMM Do YYYY, h:mm:ss a") + " " + nextFire.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+		//alert(moment().format("dddd, MMMM Do YYYY, h:mm:ss a") + " " + nextFire.format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
 		var delay = nextFire.diff(moment(), "minutes", true);
 
@@ -32,17 +32,17 @@ var timer = {
 			delay += 10080;
 		}
 
-		alert(delay);
+		//alert(delay);
 
 		chrome.alarms.create("time", {delayInMinutes: delay, periodInMinutes: intervalInMinutes});
 		alert("Weekly Frequency On");
 	},
 
 	Monthly : function(x){ //sets the alarm to a monthly (30 day) cycle
-		var nextFire = moment([moment().year(), moment().month() + 1, 0, 0, 0, 0, 0]);
+		var nextFire = moment([moment().year(), moment().month() + 1, 1, 0, 0, 0, 0]);
 		var intervalInMinutes = 43800.0;
 
-		alert(moment().format("dddd, MMMM Do YYYY, h:mm:ss a") + " " + nextFire.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+		//alert(moment().format("dddd, MMMM Do YYYY, h:mm:ss a") + " " + nextFire.format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
 		var delay = nextFire.diff(moment(), "minutes", true);
 
@@ -50,7 +50,7 @@ var timer = {
 			delay += 43800;
 		}
 
-		alert(delay);
+		//alert(delay);
 
 		chrome.alarms.create("time", {delayInMinutes: delay, periodInMinutes: intervalInMinutes});
 		alert("Monthly Frequency On");
