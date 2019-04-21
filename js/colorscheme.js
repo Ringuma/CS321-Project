@@ -9,10 +9,14 @@ if (document.getElementById(savedColor) != null) {
 applyColorScheme();
 
 function applyColorScheme() {
-  var colorChosen = document.querySelector('input[name="colors"]:checked').value;
+  var colorChosen;
+  if (document.querySelector('input[name="colors"]:checked') != null) {
+    colorChosen = document.querySelector('input[name="colors"]:checked').value;
+    window.localStorage.setItem("color", colorChosen);
+  }
   var colorSheet = document.getElementById("colorsheet");
 
-  window.localStorage.setItem("color", colorChosen);
+  colorChosen = window.localStorage.getItem("color");
 
   switch (colorChosen) {
     default:
@@ -68,6 +72,8 @@ function applyColorScheme() {
 }
 
 // add event listener to apply button and run the applyColorScheme() function
-document.getElementsByName("Apply")[0].addEventListener("click", function() {
-  applyColorScheme();
-});
+if (document.getElementsByName("Apply")[0] != null) {
+  document.getElementsByName("Apply")[0].addEventListener("click", function() {
+    applyColorScheme();
+  });
+}
