@@ -106,19 +106,6 @@ h2 {
   float: right;
 }
 
-#settings > a:link {
-  color: midnightblue;
+#settings > a {
   float: left;
-}
-
-#settings > a:visited {
-  color: midnightblue;
-}
-
-#settings > a:hover {
-  color: aquamarine;
-}
-
-#settings > a:active {
-  color: greenyellow;
 }
