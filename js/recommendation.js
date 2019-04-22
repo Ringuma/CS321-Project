@@ -146,7 +146,7 @@ function displayRec() {
       var recommendation = JSON.parse(myStorage.getItem("recommendation"));
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
-      `<h1>Your Recommendation</h1>
+      `<h3>Your Recommendation</h3>
       <p>Title: ${recommendation[0]}<p>
       <p>Genre: ${recommendation[1]}</p>
       <p>Season: ${recommendation[3]}</p>
