@@ -190,6 +190,7 @@ function checkTheBoxes() {
   }
 }
 
+// rechecks boxes when page is loaded
 document.addEventListener("DOMContentLoaded", function() {
   checkTheBoxes();
 });
