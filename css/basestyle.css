@@ -71,7 +71,6 @@ h3 {
   height:280px;
   width: 180px;
   float: left;
-  background-color: gray;
 }
 
 #cover_art > img {
@@ -97,20 +96,27 @@ h3 {
 }
 
 #footer {
-  height: 10px;
+  height: 15px;
   width: 500px;
   padding: 10px;
   overflow: hidden;
 }
 
-#refresh_button {
-  height: 20px;
-  width: 20px;
-  background-color: brown;
-  vertical-align: text-bottom;
-  float: right;
-}
-
 #settings > a {
   float: left;
+}
+
+#refresh_button {
+  float: right;
+  filter: contrast(200%);
+  animation: sharingan 2s linear infinite;
+}
+
+@keyframes sharingan {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
