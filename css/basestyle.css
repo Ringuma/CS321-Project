@@ -56,27 +56,27 @@ h2 {
 }
 
 #wrapper1 {
-  height: 150px;
-  width: 270px;
+  height: 280px;
+  width: 520px;
   margin-top: 0;
   overflow: hidden;
 }
 
 #cover_art {
-  height:150px;
-  width: 100px;
+  height:280px;
+  width: 180px;
   float: left;
   background-color: gray;
 }
 
 #cover_art > img {
-  height: 150px;
-  width: 100px;
+  height: 280px;
+  width: 180px;
 }
 
 #description {
-  width: 155px;
-  height: 150px;
+  width: 335px;
+  height: 280px;
   vertical-align: top;
   float: right;
   overflow-y: auto;
@@ -93,8 +93,8 @@ h2 {
 
 #footer {
   height: 10px;
-  width: 252px;
-  padding: 15px;
+  width: 500px;
+  padding: 10px;
   overflow: hidden;
 }
 
