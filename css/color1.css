@@ -15,3 +15,8 @@ svg {
 .slider::-webkit-slider-thumb {
   border-color: #001751;
 }
+
+#mal_link {
+  color: #2f3c7e;
+  background-color: #fbeaeb;
+}
