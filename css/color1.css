@@ -20,3 +20,7 @@ svg {
   color: #fbeaeb;
   background-color: #2f3c7e;
 }
+
+#refresh_button {
+  border-color: #001751;
+}
