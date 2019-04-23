@@ -161,7 +161,7 @@ function displayRec() {
       var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${titleURL}`;
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
-      `<h3>Your Recommendation</h3>
+      `<h4>Your Recommendation</h4>
       <p><span>Title:</span> ${recommendation[0]}</p>
       <p><span>Genre:</span> ${recommendation[1]}</p>
       <p><span>Season:</span> ${recommendation[3]}</p>
