@@ -138,6 +138,11 @@ h4 {
 #refresh_button {
   float: right;
   filter: contrast(200%);
+  width: 30px;
+  height: 30px;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 128px;
   cursor: pointer;
   animation: sharingan 2s linear infinite;
 }
