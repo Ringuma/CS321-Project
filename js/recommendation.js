@@ -176,6 +176,8 @@ function displayRec() {
       document.getElementById("mal_button").innerHTML =
       `<h3><a id=\"mal_link\" target=\"_blank\" href=\"${animeURL}\">MAL</a></h3>`
 
+      //changes popup image to match current recommendation
+      // if null, display default image?
       getImageURL(animeURL, function() {
         if (myStorage.getItem("recommendationImage") != "null") { // anime cover art
           document.getElementById("cover_art").innerHTML =
