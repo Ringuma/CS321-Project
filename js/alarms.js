@@ -58,7 +58,7 @@ var timer = {
 	Tester : function(x){ //tester creates an alarm that goes off every 30 seconds
 		// difference between now and next start interval in minutes
 		//var now = moment([moment().year(), moment().month(), moment().day(), moment().hour(), moment().minute(), moment().second(), moment().milliseconds()])
-		var nextFire = moment([moment().year(), moment().month(), moment().date(), 11, 38, 0, 0]);
+		var nextFire = moment([moment().year(), moment().month(), moment().date(), moment().hour(), moment().minute() + 1, 0, 0]);
 		var intervalInMinutes = 0.3;
 
 		//alert(moment().year() + " " + moment().month() + " " + moment().day() + " ");
