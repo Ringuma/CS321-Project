@@ -144,17 +144,30 @@ function computeRecommendation(callback) {
 function displayRec() {
     if (myStorage.getItem("emptyDataSet") === "true") { // dataset is empty, display error message
       document.getElementById("description").innerHTML =
-      `<h1>I'm Sorry</h1>
+      `<h3>I'm Sorry</h3>
       <p>There is no anime that matches your choice of filters.
       Please go to the Settings page and choose a different set of filters.</p>`;
       // default image
       document.getElementById("cover_art").innerHTML =
-      `<img src="https://media.giphy.com/media/j0eyAxbJ53mMM/giphy.gif">
-      </img>`;
+      `<img src="https://media.giphy.com/media/j0eyAxbJ53mMM/giphy.gif"/>`;
       }
 
     else {
       var recommendation = JSON.parse(myStorage.getItem("recommendation"));
+      // split title by spaces    
+      var splitTitle = recommendation[0].split(" ");
+      var titleURL = "";
+
+      // builds the title with URL space character "%20" so it can be inserted into the MAL page URL
+      for (var i = 0; i < splitTitle.length; i++) {
+        if ((i + 1) == splitTitle.length) {
+          titleURL += splitTitle[i];
+        }
+        else {
+          titleURL += splitTitle[i] + "%20";
+        }
+      }
+
       var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}`;
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
@@ -172,8 +185,7 @@ function displayRec() {
       getImageURL(animeURL, function() {
         if (myStorage.getItem("recommendationImage") != "null") { // anime cover art
           document.getElementById("cover_art").innerHTML =
-          `<img src="${myStorage.getItem("recommendationImage")}">
-          </img>`;
+          `<img src="${myStorage.getItem("recommendationImage")}"/>`;
         }
       });
     }
