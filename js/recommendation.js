@@ -138,7 +138,7 @@ function computeRecommendation(callback) {
 function displayRec() {
     if (myStorage.getItem("emptyDataSet") === "true") { // dataset is empty, display error message
       document.getElementById("description").innerHTML =
-      `<h1>I'm Sorry</h1>
+      `<h3>I'm Sorry</h3>
       <p>There is no anime that matches your choice of filters.
       Please go to the Settings page and choose a different set of filters.</p>`;
     }
@@ -147,12 +147,12 @@ function displayRec() {
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
       `<h3>Your Recommendation</h3>
-      <p>Title: ${recommendation[0]}<p>
-      <p>Genre: ${recommendation[1]}</p>
-      <p>Season: ${recommendation[3]}</p>
-      <p>Rating: ${recommendation[4]}</p>
-      <p>Episode Count: ${recommendation[5]}</p>
-      <p>Studio: ${recommendation[6]}</p>
+      <p><span>Title:</span> ${recommendation[0]}</p>
+      <p><span>Genre:</span> ${recommendation[1]}</p>
+      <p><span>Season:</span> ${recommendation[3]}</p>
+      <p><span>Rating:</span> ${recommendation[4]}</p>
+      <p><span>Episode Count:</span> ${recommendation[5]}</p>
+      <p><span>Studio:</span> ${recommendation[6]}</p>
       <a target=\"_blank\" href=\"https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}\">MAL Link.</a>`;
     }
 }
