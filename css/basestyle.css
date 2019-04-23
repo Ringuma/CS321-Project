@@ -48,6 +48,7 @@ h4 {
 
 .wrap-collapsible {
   margin-bottom: 1.2rem;
+  width: 700px;
 }
 
 input[type='checkbox'].toggle {
