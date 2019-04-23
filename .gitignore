@@ -1,0 +1,24 @@
+
+*.md
+data/myanimelist-data-set-creator-master/User Dataset Generator Scripts/getUser.py
+data/myanimelist-data-set-creator-master/User Dataset Generator Scripts/createUserListFromPost.py
+data/myanimelist-data-set-creator-master/User Dataset Generator Scripts/createUserListFromClub.py
+data/myanimelist-data-set-creator-master/requirement.txt
+data/myanimelist-data-set-creator-master/LICENSE
+data/myanimelist-data-set-creator-master/demo/preDeploy.gif
+data/myanimelist-data-set-creator-master/demo/herokuFinal.gif
+data/myanimelist-data-set-creator-master/demo/getUser.gif
+data/myanimelist-data-set-creator-master/demo/getAnime.gif
+data/myanimelist-data-set-creator-master/demo/enableAPI.gif
+data/myanimelist-data-set-creator-master/demo/createUserListFromForum.gif
+data/myanimelist-data-set-creator-master/demo/createUserListFromClub.gif
+data/myanimelist-data-set-creator-master/demo/createProject.gif
+data/myanimelist-data-set-creator-master/demo/createClientScretJSON.gif
+data/myanimelist-data-set-creator-master/Anime Dataset Generator Script/Using your own PC or Laptop/getAnime.py
+data/myanimelist-data-set-creator-master/Anime Dataset Generator Script/Using Heroku/
+data/myanimelist-data-set-creator-master/Anime Dataset Generator Script/Dataset/myAnimeListDataset [07-05-2018].csv
+data/myanimelist-data-set-creator-master/Anime Dataset Generator Script/animeData/requirements.txt
+data/myanimelist-data-set-creator-master/Anime Dataset Generator Script/animeData/Procfile
+data/myanimelist-data-set-creator-master/Anime Dataset Generator Script/animeData/client_secret.json
+data/myanimelist-data-set-creator-master/Anime Dataset Generator Script/animeData/app.py
+data/myanimelist-data-set-creator-master/Anime Dataset Generator Script/Dataset/myAnimeListDataset [07-05-2018].csv
