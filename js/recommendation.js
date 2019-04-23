@@ -41,6 +41,7 @@ function loadData(callback) {
       success: function(data) {
           // convert string formatted as a csv file into an array
           var spreadsheetData = $.csv.toArrays(data);
+          spreadsheetData.shift(); // removes first item in array, the header of the spreadsheet
 
           // entire dataset, unfiltered
           myStorage.setItem("animeData", JSON.stringify(spreadsheetData));
@@ -88,19 +89,6 @@ function excludeFilters(callback) {
 
   for (var i = 0; i < dataSet.length; i++) {
     var found = false; // keeps track of whether a "bad" filter is found in the entry
-    //var emptyArray = new Array();
-
-    // _.intersection() returns which items in one array matched another
-    // if it returns an empty array, no items matched
-    /*
-    if (_.intersection(dataSet[i][3], excludedFilters).length === 0) {
-      newDataSet.push(dataSet[i]);
-      //found = true;
-    }
-    else {
-      console.log("Found something " + dataSet[i][3]);
-    }
-*/
 
     for (var j = 0; j < excludedFilters.length; j++) {
       // if "bad" filter is found, breaks out of loop
@@ -109,7 +97,6 @@ function excludeFilters(callback) {
         break;
       }
     }
-
 
     // if "bad" filter not found, adds to new dataset
     if (!found) {
@@ -133,18 +120,21 @@ function computeRecommendation(callback) {
 
   // check if filteredData is empty------------------------------------------------
   if (animeData == undefined || animeData.length == 0) {
+    console.log("FilterData is empty");
     myStorage.setItem("emptyDataSet", true);
-    displayRec();
+    myStorage.setItem("recommendation", null);
+    //displayRec();
+    callback();
     return;
   }
   else {
     myStorage.setItem("emptyDataSet", false);
-    // generate random index between 1-dataset length (exclude 0th index
-    // because the 0th index is the header for the dataset)
-    var min = 1;
-    var max = animeData.length;
+    console.log(animeData);
+    // generate random index between 0-dataset length
+    var min = 0;
+    var max = animeData.length - 1;
 
-    // calculates random index 1 to animeData.length inclusive
+    // calculates random index 0 to animeData.length - 1 inclusive
     var index = Math.floor(Math.random() * (max - min + 1)) + min;
 
     // build Recommendation object

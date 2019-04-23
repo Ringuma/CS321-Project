@@ -102,7 +102,7 @@ function applyFilters(callback) {
 
 // checks to see which filter checkboxes are checked when you click "Apply" in the options.html page
 // adds it to filter array in localStorage
-function parseFilters() {
+function parseFilters(callback) {
   var filterArray = [[],[],[],[],[]];
   var checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
 
@@ -161,6 +161,7 @@ function parseFilters() {
   console.log("done parsing -- filtered array is " + filterArray);
 
   myStorage.setItem("currentFilters", JSON.stringify(filterArray));
+  callback();
 }
 
 // records the state of the checked boxes on the page, stores 1D array for simpler matching in checkTheBoxes()
@@ -197,6 +198,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // parse currently checked filters and save state of checked filters??
 document.getElementsByName("Apply")[0].addEventListener("click", function() {
-  parseFilters();
-  applyFilters(recordCheckedBoxes);
+  parseFilters( function() {
+    applyFilters(recordCheckedBoxes);
+  });
+
 });
