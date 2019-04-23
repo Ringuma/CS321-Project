@@ -11,19 +11,21 @@ document.addEventListener("DOMContentLoaded", function(){
     }); // loads dataset, which then calls computeRecommendation(), which then calls displayRec()
   }
   else {
+    var port = chrome.runtime.connect({name:"timer"}); //create a responder to message sent from the background.js
+    port.onMessage.addListener(function(message,sender){
+      if(message.check == "there"){ //if the message from background.js is "there", a new recommendation is computed. Otherwise, it will display the previous recommendation.
+    	computeRecommendation(displayRec);
+      }else{
+    	displayRec();
+      }
+    }, displayRec());
+
     // displays previous recommendation
-    displayRec();
+    //displayRec();
   }
 }, false);
 
-var port = chrome.runtime.connect({name:"timer"}); //create a responder to message sent from the background.js
-port.onMessage.addListener(function(message,sender){
-  if(message.check == "there"){ //if the message from background.js is "there", a new recommendation is computed. Otherwise, it will display the previous recommendation.
-	computeRecommendation(displayRec);
-  }else{
-	displayRec();
-  }
-});
+
 
 // event listener that computes a new recommendation upon clicking the refresh button
 document.getElementById("refresh_button").addEventListener("click", function() {
@@ -37,8 +39,10 @@ function loadData(callback) {
       url: spreadsheetURL,
       dataType: "text",
       success: function(data) {
+          // convert string formatted as a csv file into an array
           var spreadsheetData = $.csv.toArrays(data);
 
+          // entire dataset, unfiltered
           myStorage.setItem("animeData", JSON.stringify(spreadsheetData));
 
           // "filteredData" is a subset of "animeData" that only includes entries that match the current selection of Filters
@@ -51,12 +55,12 @@ function loadData(callback) {
           // third index = anime ID
           var Recommendation = [null,null,null]
 
-          // initialized localStorage Recommendation item
+          // initializes localStorage Recommendation item
           // and sets initialized value in localStorage to true
           myStorage.setItem("recommendation", JSON.stringify(Recommendation));
           myStorage.setItem("initialized", "true");
 
-          // initializes current filters
+          // initializes current filters to empty
           var filters = [];
           myStorage.setItem("currentFilters", JSON.stringify(filters));
 
@@ -73,18 +77,30 @@ function loadData(callback) {
           alert(request.responseText);
       }
    });
-
-
 }
 
 
 function excludeFilters(callback) {
-  var excludedFilters = ["Hentai", "Ecchi", "Shoujo Ai", "Shounen Ai", "Yaoi", "Yuri"];
+  //var _ = require(['underscore']);
+  var excludedFilters = ["Hentai", "Ecchi", "Harem", "Shoujo Ai", "Shounen Ai", "Yaoi", "Yuri"];
   var newDataSet = [];
   var dataSet = JSON.parse(myStorage.getItem("animeData"));
 
   for (var i = 0; i < dataSet.length; i++) {
-    var found = false;
+    var found = false; // keeps track of whether a "bad" filter is found in the entry
+    //var emptyArray = new Array();
+
+    // _.intersection() returns which items in one array matched another
+    // if it returns an empty array, no items matched
+    /*
+    if (_.intersection(dataSet[i][3], excludedFilters).length === 0) {
+      newDataSet.push(dataSet[i]);
+      //found = true;
+    }
+    else {
+      console.log("Found something " + dataSet[i][3]);
+    }
+*/
 
     for (var j = 0; j < excludedFilters.length; j++) {
       // if "bad" filter is found, breaks out of loop
@@ -93,6 +109,7 @@ function excludeFilters(callback) {
         break;
       }
     }
+
 
     // if "bad" filter not found, adds to new dataset
     if (!found) {
@@ -112,7 +129,7 @@ function computeRecommendation(callback) {
   // 2d array that represents current dataset for anime
   var animeData = JSON.parse(myStorage.getItem("filteredData"));
 
-  console.log(myStorage.getItem("filteredData"));
+  //console.log(myStorage.getItem("filteredData"));
 
   // check if filteredData is empty------------------------------------------------
   if (animeData == undefined || animeData.length == 0) {
@@ -155,7 +172,21 @@ function displayRec() {
 
     else {
       var recommendation = JSON.parse(myStorage.getItem("recommendation"));
-      var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}`;
+      var splitTitle = recommendation[0].split(" ");
+      var titleURL = "";
+
+      // builds the title with URL space character "%20" so it can be inserted into the MAL page URL
+      for (var i = 0; i < splitTitle.length; i++) {
+        if ((i + 1) == splitTitle.length) {
+          titleURL += splitTitle[i];
+        }
+        else {
+          titleURL += splitTitle[i] + "%20";
+        }
+      }
+
+      var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${titleURL}`;
+      console.log(animeURL);
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
       `<h1>Your Recommendation</h1>
@@ -170,15 +201,25 @@ function displayRec() {
       //changes popup image to match current recommendation
       // if null, display default image?
       getImageURL(animeURL, function() {
-        if (myStorage.getItem("recommendationImage") != "null") { // anime cover art
+        if (myStorage.getItem("recommendationImage") == "null") { // anime cover art exists
+          console.log(myStorage.getItem("recommendationImage"));
           document.getElementById("cover_art").innerHTML =
-          `<img src="${myStorage.getItem("recommendationImage")}">
+          `<img src="https://media.giphy.com/media/j0eyAxbJ53mMM/giphy.gif">
+          </img>`;
+        }
+        else {
+          console.log(myStorage.getItem("recommendationImage"));
+          var imageURL = myStorage.getItem("recommendationImage");
+
+          document.getElementById("cover_art").innerHTML =
+          `<img src="${imageURL}">
           </img>`;
         }
       });
     }
 }
 
+// scrapes the URL for the cover image from MAL
 function getImageURL(animeURL, callback) {
     var url = animeURL;
     var malHTML = "";
@@ -189,7 +230,7 @@ function getImageURL(animeURL, callback) {
     xmlhttp.send();
     var malHTML = xmlhttp.responseText;
 
-    console.log(malHTML);
+    //console.log(malHTML);
 
     var dom_nodes = $($.parseHTML(malHTML));
     var allImages = dom_nodes.contents().find('img');
