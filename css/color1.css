@@ -7,6 +7,21 @@ svg {
   fill: #2f3c7e;
 }
 
+.lbl-toggle {
+  color: #fbeaeb;
+  background: #2f3c7e;
+}
+
+.lbl-toggle::before {
+  border-left-color: #fbeaeb;
+}
+
+.collapsible-content .content-inner {
+  color: #6066ae;
+  background: #c8b8b9;
+  border-bottom-color: #2f3c7e;
+}
+
 .slider {
   border-color: #001751;
   background-color: #6066ae;
