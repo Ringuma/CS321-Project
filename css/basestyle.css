@@ -47,7 +47,7 @@ h4 {
 }
 
 .wrap-collapsible {
-  margin-bottom: 1.2rem 0;
+  margin-bottom: 1.2rem;
 }
 
 input[type='checkbox'].toggle {
@@ -56,7 +56,7 @@ input[type='checkbox'].toggle {
 
 .lbl-toggle {
   display: block;
-  text-align: center;
+  text-align: left;
   padding: 1rem;
   cursor: pointer;
   border-radius: 7px;
@@ -86,7 +86,7 @@ input[type='checkbox'].toggle {
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
-  max-height: 600px;
+  max-height: 1000px;
 }
 
 .toggle:checked + .lbl-toggle {
@@ -102,7 +102,6 @@ input[type='checkbox'].toggle {
 }
 
 .checkbox-columns {
-  width: 50%;
   column-count: 2;
   list-style-type: none;
   margin: 0;
