@@ -36,6 +36,7 @@ h2 {
 h3 {
   font-weight: bold;
   font-size: 20px;
+  margin-top: 0px;
 }
 
 h4 {
@@ -122,8 +123,8 @@ h4 {
 }
 
 #mal_link {
-  text_align: center;
-  text_decoration: none;
+  text-align: center;
+  text-decoration: none;
 }
 
 #refresh_button {
