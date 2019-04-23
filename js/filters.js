@@ -45,7 +45,7 @@ function applyFilters(callback) {
     }
 
     // rating------------------------------------------------------------------------------------------------
-    if (currentFilters[1].length !== 0) {
+    if (found && currentFilters[1].length !== 0) {
       console.log("Searching for rating filters..")
       var entryRating = animeData[i][10];
       var filterRatingMin = currentFilters[1][0];
@@ -57,7 +57,7 @@ function applyFilters(callback) {
     }
 
     // studio-------------------------------------------------------------------------------------------------
-    if (currentFilters[2].length !== 0) {
+    if (found && currentFilters[2].length !== 0) {
       var entryStudios = animeData[i][8];
 
       for (var j = 0; j < currentFilters[2].length; j++) {
@@ -68,7 +68,7 @@ function applyFilters(callback) {
     }
 
     // ep count-------------------------------------------------------------------------------------------------
-    if (currentFilters[3].length !== 0) {
+    if (found && currentFilters[3].length !== 0) {
       var entryEpCount = animeData[i][5];
       var filterCountMin = currentFilters[3][0];
       var filterCountMax = currentFilters[3][1];
@@ -79,7 +79,7 @@ function applyFilters(callback) {
     }
 
     // year-------------------------------------------------------------------------------------------------
-    if (currentFilters[4].length !== 0) {
+    if (found && currentFilters[4].length !== 0) {
       var entryYear = animeData[i][2].split(" ")[1];
       var filterYearMin = currentFilters[4][0];
       var filterYearMax = currentFilters[4][1];
@@ -102,7 +102,7 @@ function applyFilters(callback) {
 
 // checks to see which filter checkboxes are checked when you click "Apply" in the options.html page
 // adds it to filter array in localStorage
-function parseFilters() {
+function parseFilters(callback) {
   var filterArray = [[],[],[],[],[]];
   var checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
 
@@ -161,6 +161,7 @@ function parseFilters() {
   console.log("done parsing -- filtered array is " + filterArray);
 
   myStorage.setItem("currentFilters", JSON.stringify(filterArray));
+  callback();
 }
 
 // records the state of the checked boxes on the page, stores 1D array for simpler matching in checkTheBoxes()
@@ -197,6 +198,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // parse currently checked filters and save state of checked filters??
 document.getElementsByName("Apply")[0].addEventListener("click", function() {
-  parseFilters();
-  applyFilters(recordCheckedBoxes);
+  parseFilters( function() {
+    applyFilters(recordCheckedBoxes);
+  });
+
 });
