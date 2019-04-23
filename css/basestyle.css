@@ -19,6 +19,10 @@ body {
   font-size: 16px;
 }
 
+span {
+  font-weight: bold;
+}
+
 h1 {
   font-weight: bold;
   font-size: 32px;
@@ -27,6 +31,19 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 .checkbox-columns {
@@ -53,4 +70,86 @@ h2 {
   border-radius: 128px;
   background-image: url('../images/icon32.png');
   cursor: pointer;
+}
+
+#wrapper1 {
+  height: 280px;
+  width: 520px;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+#cover_art {
+  height:280px;
+  width: 180px;
+  float: left;
+}
+
+#cover_art > img {
+  height: 280px;
+  width: 180px;
+}
+
+#description {
+  width: 335px;
+  height: 280px;
+  vertical-align: top;
+  float: right;
+  overflow-y: auto;
+}
+
+#description > p {
+  line-height: 100%;
+  margin: 3px;
+}
+
+#footer {
+  height: 15px;
+  width: 500px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  overflow: hidden;
+}
+
+#settings > a {
+  float: left;
+}
+
+#mal_button {
+  width: 50%;
+  margin: 0px 0px 0px 115px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#mal_link {
+  text-align: center;
+  text-decoration: none;
+  padding-top: 3px;
+  padding-right:10px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+  border-radius: 30px;
+}
+
+#refresh_button {
+  float: right;
+  filter: contrast(200%);
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 128px;
+  cursor: pointer;
+  animation: sharingan 2s linear infinite;
+}
+
+@keyframes sharingan {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
