@@ -149,7 +149,53 @@ function computeRecommendation(callback) {
 
     // build Recommendation object
     // attributes: title, genre, ID, year, rating, ep count, studio
-    var Recommendation = [animeData[index][1], animeData[index][3], animeData[index][0], animeData[index][2], animeData[index][10],animeData[index][5],animeData[index][8]];
+    var title = animeData[index][1];
+
+    var genre = "";
+    if (animeData[index][3] == "[]") {
+      genre = "No assigned genre.";
+    }
+    else {
+      genre = animeData[index][3];
+    }
+
+    var id = animeData[index][0];
+
+    var year = "";
+    if (animeData[index][2].includes("None")) {
+      console.log(animeData[index][2]);
+      year = "No air date.";
+    }
+    else {
+      year = animeData[index][2];
+    }
+
+    var rating = "";
+    if (animeData[index][10].includes("None") || animeData[index][10] == 0) {
+      rating = "No rating.";
+    }
+    else {
+      rating = animeData[index][10];
+    }
+
+    var epCount = "";
+    if (animeData[index][5].includes("None") || animeData[index][5] == 0) {
+      epCount = "No episodes.";
+    }
+    else {
+      epCount = animeData[index][5];
+    }
+
+    var studio = "";
+    if (animeData[index][8] == "[]") { // length is a string, "[]" of length 2
+      studio = "No known studios.";
+    }
+    else {
+      studio = animeData[index][8];
+    }
+    console.log(animeData[index][8].length + " " + animeData[index][8]);
+
+    var Recommendation = [title, genre, id, year, rating, epCount, studio];
 
     // saves current recommendation in localStorage
     myStorage.setItem("recommendation", JSON.stringify(Recommendation));
