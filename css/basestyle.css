@@ -49,6 +49,9 @@ h4 {
 .checkbox-columns {
   width: 50%;
   column-count: 2;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .slider {
