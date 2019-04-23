@@ -237,7 +237,7 @@ function displayRec() {
       //changes popup image to match current recommendation
       // if null, display default image?
       getImageURL(animeURL, function() {
-        if (myStorage.getItem("recommendationImage") == "null") { // anime cover art exists
+        if (myStorage.getItem("recommendationImage").includes("null") || myStorage.getItem("recommendationImage") === "") { // anime cover art exists
           console.log(myStorage.getItem("recommendationImage"));
           document.getElementById("cover_art").innerHTML =
           `<img src="https://media.giphy.com/media/j0eyAxbJ53mMM/giphy.gif">
@@ -253,6 +253,7 @@ function displayRec() {
         }
       });
     }
+    //callback();
 }
 
 // scrapes the URL for the cover image from MAL
@@ -268,21 +269,27 @@ function getImageURL(animeURL, callback) {
 
     console.log(malHTML);
 
-    var dom_nodes = $($.parseHTML(malHTML));
-    var allImages = dom_nodes.contents().find('img');
-    var alt = JSON.parse(myStorage.getItem("recommendation"))[0]; // alt is title of anime
+    if (malHTML.includes("Too many requests")) {
+      myStorage.setItem("recommendationImage", "null");
+    }
+    else {
+      var dom_nodes = $($.parseHTML(malHTML));
+      var allImages = dom_nodes.contents().find('img');
+      var alt = JSON.parse(myStorage.getItem("recommendation"))[0]; // alt is title of anime
 
 
 
-    for (var i = 0; i < allImages.length; i++) {
-        if (allImages[i].alt == alt) {
-            imageURL = allImages[i].src;
-            console.log("Image URL = " + imageURL);
-            break;
-        }
+      for (var i = 0; i < allImages.length; i++) {
+          if (allImages[i].alt == alt) {
+              imageURL = allImages[i].src;
+              console.log("Image URL = " + imageURL);
+              break;
+          }
+      }
+
+      myStorage.setItem("recommendationImage", imageURL);
     }
 
-    myStorage.setItem("recommendationImage", imageURL);
 
     console.log(imageURL);
     callback();
