@@ -170,6 +170,6 @@ function displayRec() {
       <p><span>Studio:</span> ${recommendation[6]}</p>`;
      
       document.getElementById("mal_button").innerHTML =
-      `<a id=\"mal_link\" target=\"_blank\" href=\"${animeURL}\">More Details</a>`;
+      `<h3><a id=\"mal_link\" target=\"_blank\" href=\"${animeURL}\">MAL</a></h3>`;
     }
 }
