@@ -60,6 +60,9 @@ function loadData(callback) {
           var filters = [];
           myStorage.setItem("currentFilters", JSON.stringify(filters));
 
+          // initializes recommendation image to null
+          myStorage.setItem("recommendationImage", "null");
+
           // removes blacklisted filters from localStorage
           excludeFilters( function() {
             callback();
@@ -109,10 +112,13 @@ function computeRecommendation(callback) {
   // 2d array that represents current dataset for anime
   var animeData = JSON.parse(myStorage.getItem("filteredData"));
 
+  console.log(myStorage.getItem("filteredData"));
+
   // check if filteredData is empty------------------------------------------------
-  if (animeData.length == 0) {
+  if (animeData == undefined || animeData.length == 0) {
     myStorage.setItem("emptyDataSet", true);
     displayRec();
+    return;
   }
   else {
     myStorage.setItem("emptyDataSet", false);
