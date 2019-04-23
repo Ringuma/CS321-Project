@@ -106,7 +106,10 @@ h4 {
 #footer {
   height: 15px;
   width: 500px;
-  padding: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 15px;
+  padding-left: 10px;
   overflow: hidden;
 }
 
@@ -125,6 +128,11 @@ h4 {
 #mal_link {
   text-align: center;
   text-decoration: none;
+  padding-top: 3px;
+  padding-right:10px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+  border-radius: 30px;
 }
 
 #refresh_button {
