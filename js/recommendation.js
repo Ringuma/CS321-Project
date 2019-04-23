@@ -197,17 +197,17 @@ function computeRecommendation(callback) {
 function displayRec() {
     if (myStorage.getItem("emptyDataSet") === "true") { // dataset is empty, display error message
       document.getElementById("description").innerHTML =
-      `<h1>I'm Sorry</h1>
+      `<h3>I'm Sorry</h3>
       <p>There is no anime that matches your choice of filters.
       Please go to the Settings page and choose a different set of filters.</p>`;
       // default image
       document.getElementById("cover_art").innerHTML =
-      `<img src="https://media.giphy.com/media/j0eyAxbJ53mMM/giphy.gif">
-      </img>`;
-      }
+      `<img src="https://media.giphy.com/media/j0eyAxbJ53mMM/giphy.gif"/>`;
+    }
 
     else {
       var recommendation = JSON.parse(myStorage.getItem("recommendation"));
+      // split title by spaces    
       var splitTitle = recommendation[0].split(" ");
       var titleURL = "";
 
@@ -222,17 +222,21 @@ function displayRec() {
       }
 
       var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${titleURL}`;
+
       console.log(animeURL);
+      
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
-      `<h1>Your Recommendation</h1>
-      <p>Title: ${recommendation[0]}<p>
-      <p>Genre: ${recommendation[1]}</p>
-      <p>Season: ${recommendation[3]}</p>
-      <p>Rating: ${recommendation[4]}</p>
-      <p>Episode Count: ${recommendation[5]}</p>
-      <p>Studio: ${recommendation[6]}</p>
-      <a target=\"_blank\" href=${animeURL}>MAL Link.</a>`;
+      `<h4>Your Recommendation:</h4>
+      <p><span>Title:</span> ${recommendation[0]}</p>
+      <p><span>Genre:</span> ${recommendation[1]}</p>
+      <p><span>Season:</span> ${recommendation[3]}</p>
+      <p><span>Rating:</span> ${recommendation[4]}</p>
+      <p><span>Episode Count:</span> ${recommendation[5]}</p>
+      <p><span>Studio:</span> ${recommendation[6]}</p>`;
+     
+      document.getElementById("mal_button").innerHTML =
+      `<h3><a id=\"mal_link\" target=\"_blank\" href=\"${animeURL}\">MAL</a></h3>`
 
       //changes popup image to match current recommendation
       // if null, display default image?
@@ -240,6 +244,7 @@ function displayRec() {
         if (myStorage.getItem("recommendationImage").includes("null") || myStorage.getItem("recommendationImage") === "") { // anime cover art exists
           console.log(myStorage.getItem("recommendationImage"));
           document.getElementById("cover_art").innerHTML =
+
           `<img src="https://media.giphy.com/media/j0eyAxbJ53mMM/giphy.gif">
           </img>`;
         }

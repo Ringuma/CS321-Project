@@ -3,6 +3,10 @@ body {
   background-color: #fbeaeb;
 }
 
+svg {
+  fill: #2f3c7e;
+}
+
 .slider {
   border-color: #001751;
   background-color: #6066ae;
@@ -10,4 +14,13 @@ body {
 
 .slider::-webkit-slider-thumb {
   border-color: #001751;
+}
+
+#mal_link {
+  color: #fbeaeb;
+  background-color: #2f3c7e;
+}
+
+#refresh_button {
+  border-color: #2f3c7e;
 }
