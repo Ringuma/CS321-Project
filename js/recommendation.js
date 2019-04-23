@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", function(){
       }else{
     	displayRec();
       }
-    }, displayRec());
+    });
 
     // displays previous recommendation
-    //displayRec();
+    displayRec();
   }
 }, false);
 
@@ -266,15 +266,18 @@ function getImageURL(animeURL, callback) {
     xmlhttp.send();
     var malHTML = xmlhttp.responseText;
 
-    //console.log(malHTML);
+    console.log(malHTML);
 
     var dom_nodes = $($.parseHTML(malHTML));
     var allImages = dom_nodes.contents().find('img');
     var alt = JSON.parse(myStorage.getItem("recommendation"))[0]; // alt is title of anime
 
+
+
     for (var i = 0; i < allImages.length; i++) {
         if (allImages[i].alt == alt) {
             imageURL = allImages[i].src;
+            console.log("Image URL = " + imageURL);
             break;
         }
     }
