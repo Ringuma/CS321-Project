@@ -150,7 +150,7 @@ function displayRec() {
       // default image
       document.getElementById("cover_art").innerHTML =
       `<img src="https://media.giphy.com/media/j0eyAxbJ53mMM/giphy.gif"/>`;
-      }
+    }
 
     else {
       var recommendation = JSON.parse(myStorage.getItem("recommendation"));
@@ -168,17 +168,19 @@ function displayRec() {
         }
       }
 
-      var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}`;
+      var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${titleURL}`;
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
-      `<h1>Your Recommendation</h1>
-      <p>Title: ${recommendation[0]}<p>
-      <p>Genre: ${recommendation[1]}</p>
-      <p>Season: ${recommendation[3]}</p>
-      <p>Rating: ${recommendation[4]}</p>
-      <p>Episode Count: ${recommendation[5]}</p>
-      <p>Studio: ${recommendation[6]}</p>
-      <a target=\"_blank\" href=${animeURL}>MAL Link.</a>`;
+      `<h4>Your Recommendation</h4>
+      <p><span>Title:</span> ${recommendation[0]}</p>
+      <p><span>Genre:</span> ${recommendation[1]}</p>
+      <p><span>Season:</span> ${recommendation[3]}</p>
+      <p><span>Rating:</span> ${recommendation[4]}</p>
+      <p><span>Episode Count:</span> ${recommendation[5]}</p>
+      <p><span>Studio:</span> ${recommendation[6]}</p>`;
+     
+      document.getElementById("mal_button").innerHTML =
+      `<h3><a id=\"mal_link\" target=\"_blank\" href=\"${animeURL}\">MAL</a></h3>`
 
       //changes popup image to match current recommendation
       // if null, display default image?
