@@ -144,6 +144,21 @@ function displayRec() {
     }
     else {
       var recommendation = JSON.parse(myStorage.getItem("recommendation"));
+      // split title by spaces    
+      var splitTitle = recommendation[0].split(" ");
+      var titleURL = "";
+
+      // builds the title with URL space character "%20" so it can be inserted into the MAL page URL
+      for (var i = 0; i < splitTitle.length; i++) {
+        if ((i + 1) == splitTitle.length) {
+          titleURL += splitTitle[i];
+        }
+        else {
+          titleURL += splitTitle[i] + "%20";
+        }
+      }
+
+      var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${titleURL}`;
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
       `<h3>Your Recommendation</h3>
@@ -152,7 +167,9 @@ function displayRec() {
       <p><span>Season:</span> ${recommendation[3]}</p>
       <p><span>Rating:</span> ${recommendation[4]}</p>
       <p><span>Episode Count:</span> ${recommendation[5]}</p>
-      <p><span>Studio:</span> ${recommendation[6]}</p>
-      <a target=\"_blank\" href=\"https://myanimelist.net/anime/${recommendation[2]}/${recommendation[0]}\">MAL Link.</a>`;
+      <p><span>Studio:</span> ${recommendation[6]}</p>`;
+     
+      document.getElementById("mal_button").innerHTML =
+      `<a id=\"mal_link\" target=\"_blank\" href=\"${animeURL}\">More Details</a>`;
     }
 }
