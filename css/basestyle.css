@@ -108,6 +108,14 @@ h3 {
   float: left;
 }
 
+#mal_button {
+  width: 50%;
+  margin: 0px 0px 0px 125px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
 #refresh_button {
   float: right;
   filter: contrast(200%);
