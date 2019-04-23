@@ -138,6 +138,7 @@ h4 {
 #refresh_button {
   float: right;
   filter: contrast(200%);
+  cursor: pointer;
   animation: sharingan 2s linear infinite;
 }
 
