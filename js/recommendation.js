@@ -1,6 +1,6 @@
 
 var myStorage = window.localStorage;
-var spreadsheetURL = "../data/myAnimeListData.csv";
+var spreadsheetURL = "../data/animeData.csv";
 
 // event listener that displays recommendation upon opening of popup
 document.addEventListener("DOMContentLoaded", function(){
@@ -207,7 +207,7 @@ function displayRec() {
 
     else {
       var recommendation = JSON.parse(myStorage.getItem("recommendation"));
-      // split title by spaces    
+      // split title by spaces
       var splitTitle = recommendation[0].split(" ");
       var titleURL = "";
 
@@ -224,7 +224,7 @@ function displayRec() {
       var animeURL = `https://myanimelist.net/anime/${recommendation[2]}/${titleURL}`;
 
       console.log(animeURL);
-      
+
       // changes the popup HTML to reflect current recommendation
       document.getElementById("description").innerHTML =
       `<h4>Your Recommendation:</h4>
@@ -234,7 +234,7 @@ function displayRec() {
       <p><span>Rating:</span> ${recommendation[4]}</p>
       <p><span>Episode Count:</span> ${recommendation[5]}</p>
       <p><span>Studio:</span> ${recommendation[6]}</p>`;
-     
+
       document.getElementById("mal_button").innerHTML =
       `<h3><a id=\"mal_link\" target=\"_blank\" href=\"${animeURL}\">MAL</a></h3>`
 
