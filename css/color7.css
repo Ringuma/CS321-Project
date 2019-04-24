@@ -1,0 +1,35 @@
+body {
+  color: #8bd8bd;
+  background-color: #243665;
+}
+
+svg {
+  fill: #8bd8bd;
+}
+
+.lbl-toggle {
+  color: #243665;
+  background: #8bd8bd;
+}
+
+.lbl-toggle::before {
+  border-left-color: #243665;
+}
+
+.slider {
+  border-color: #5aa68d;
+  background-color: #bdffef;
+}
+
+.slider::-webkit-slider-thumb {
+  border-color: #5aa68d;
+}
+
+#mal_link {
+  color: #243665;
+  background-color: #8bd8bd;
+}
+
+#refresh_button {
+  border-color: #8bd8bd;
+}
