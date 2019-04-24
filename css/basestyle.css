@@ -64,7 +64,7 @@ input[type='checkbox'].toggle {
   text-align: left;
   padding: 1rem;
   cursor: pointer;
-  border-radius: 7px;
+  border-radius: 20px;
   transition: all 0.25s ease-out;
 }
 
@@ -91,7 +91,7 @@ input[type='checkbox'].toggle {
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
-  max-height: 1000px;
+  max-height: 2000px;
 }
 
 .toggle:checked + .lbl-toggle {
@@ -100,9 +100,11 @@ input[type='checkbox'].toggle {
 }
 
 .collapsible-content .content-inner {
-  border-bottom: 1px solid;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
+  border-bottom: 10px solid;
+  border-left: 10px solid;
+  border-right: 10px solid;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   padding: .5rem 1rem;
 }
 
