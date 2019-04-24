@@ -167,7 +167,7 @@ function parseFilters(callback) {
 // records the state of the checked boxes on the page, stores 1D array for simpler matching in checkTheBoxes()
 // saves the names of the previously checked boxes, as each name is unique
 function recordCheckedBoxes() {
-  var currentCheckedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
+  var currentCheckedBoxes = document.querySelectorAll('input.filters:checked');
   var checkedBoxesNames = [];
 
   for (var i = 0; i < currentCheckedBoxes.length; i++) {
@@ -180,7 +180,7 @@ function recordCheckedBoxes() {
 // recalls previous state of checked boxes and rechecks them upon opening the Settings page
 function checkTheBoxes() {
   if ((myStorage.getItem("checkedBoxes") != null) || (JSON.parse(myStorage.getItem("checkedBoxes")).length != 0)) {
-    var allCheckboxes = document.querySelectorAll('input[type=checkbox]');
+    var allCheckboxes = document.querySelectorAll('input.filters');
     var previouslyCheckedBoxes = JSON.parse(myStorage.getItem("checkedBoxes"));
 
     for (var i = 0; i < allCheckboxes.length; i++) {
