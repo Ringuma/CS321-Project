@@ -7,6 +7,15 @@ svg {
   fill: #f9d342;
 }
 
+.lbl-toggle {
+  color: #292826;
+  background: #f9d342;
+}
+
+.lbl-toggle::before {
+  border-left-color: #292826;
+}
+
 .slider {
   border-color: #c2a200;
   background-color: #ffff75;
