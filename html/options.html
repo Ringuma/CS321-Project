@@ -160,104 +160,126 @@
         <path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
       </svg>
     </h1>
-    <p>How often would you like to receive a new recommendation?</p>
-    <button id = "daily">Daily</button>
-    <button id = "weekly">Weekly</button>
-    <button id = "monthly">Monthly</button>
-    <button id = "test">Timer Tester</button>
-    <button id = "off">Off</button>
+    <div class="wrap-collapsible">
+      <input id="collapsible-frequency" class="toggle" type="checkbox"/>
+      <label for="collapsible-frequency" class="lbl-toggle"><h2>Time Intervals</h2></label>
+      <div class="collapsible-content">
+        <div class="content-inner">
+          <p>How often would you like to receive a new recommendation?</p>
+          <button id = "daily">Daily</button>
+          <button id = "weekly">Weekly</button>
+          <button id = "monthly">Monthly</button>
+          <button id = "test">Timer Tester</button>
+          <button id = "off">Off</button>
+        </div>
+      </div>
+    </div>
     <h1>Accessibility 
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
       </svg>
     </h1>
-    <h2>Font Size</h2>
-    <div>
-      10px<input type="range" min="10" max="20" value="16" class="slider" id="sizeSlider"/>20px
-      <p>Selected Font Size Value: <span id="fontSize"></span>px</p>
+    <div class="wrap-collapsible">
+      <input id="collapsible-font" class="toggle" type="checkbox"/>
+      <label for="collapsible-font" class="lbl-toggle"><h2>Font Size</h2></label>
+      <div class="collapsible-content">
+        <div class="content-inner">
+          <div>
+            10px<input type="range" min="10" max="20" value="16" class="slider" id="sizeSlider"/>20px
+            <p>Selected Font Size Value: <span id="fontSize"></span>px</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <h2>Color Scheme</h2>
-    <label><input type="radio" name="colors" id="color1" value="color1"/>
-      <div>
-        <span>color1</span>
+    <div class="wrap-collapsible">
+      <input id="collapsible-color" class="toggle" type="checkbox"/>
+      <label for="collapsible-color" class="lbl-toggle"><h2>Color Scheme</h2></label>
+      <div class="collapsible-content">
+        <div class="content-inner">
+          <label><input type="radio" name="colors" id="color1" value="color1"/>
+            <div>
+              <span>color1</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color2" value="color2"/>
+            <div>
+              <span>color2</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color3" value="color3"/>
+            <div>
+              <span>color3</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color4" value="color4"/>
+            <div>
+              <span>color4</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color5" value="color5"/>
+            <div>
+              <span>color5</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color6" value="color6"/>
+            <div>
+              <span>color6</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color7" value="color7"/>
+            <div>
+              <span>color7</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color8" value="color8"/>
+            <div>
+              <span>color8</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color9" value="color9"/>
+            <div>
+              <span>color9</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color10" value="color10"/>
+            <div>
+              <span>color10</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color11" value="color11"/>
+            <div>
+              <span>color11</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color12" value="color12"/>
+            <div>
+              <span>color12</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color13" value="color13"/>
+            <div>
+              <span>color13</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color14" value="color14"/>
+            <div>
+              <span>color14</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color15" value="color15"/>
+            <div>
+              <span>color15</span>
+            </div>
+          </label>
+          <label><input type="radio" name="colors" id="color16" value="color16"/>
+            <div>
+              <span>color16</span>
+            </div>
+          </label>
+        </div>
       </div>
-    </label>
-    <label><input type="radio" name="colors" id="color2" value="color2"/>
-      <div>
-        <span>color2</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color3" value="color3"/>
-      <div>
-        <span>color3</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color4" value="color4"/>
-      <div>
-        <span>color4</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color5" value="color5"/>
-      <div>
-        <span>color5</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color6" value="color6"/>
-      <div>
-        <span>color6</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color7" value="color7"/>
-      <div>
-        <span>color7</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color8" value="color8"/>
-      <div>
-        <span>color8</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color9" value="color9"/>
-      <div>
-        <span>color9</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color10" value="color10"/>
-      <div>
-        <span>color10</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color11" value="color11"/>
-      <div>
-        <span>color11</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color12" value="color12"/>
-      <div>
-        <span>color12</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color13" value="color13"/>
-      <div>
-        <span>color13</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color14" value="color14"/>
-      <div>
-        <span>color14</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color15" value="color15"/>
-      <div>
-        <span>color15</span>
-      </div>
-    </label>
-    <label><input type="radio" name="colors" id="color16" value="color16"/>
-      <div>
-        <span>color16</span>
-      </div>
-    </label>
+    </div>
     <input type="submit" name="Apply" value="Apply"/>
   </body>
   <script data-main="../js/alarms.js" type="text/javascript" src="../js/moment.min.js"></script>
