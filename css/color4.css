@@ -17,12 +17,12 @@ svg {
 }
 
 .slider {
-  border-color: #51504e;
-  background-color: #000000;
+  border-color: #000000;
+  background-color: #51504e;
 }
 
 .slider::-webkit-slider-thumb {
-  border-color: #51504e;
+  border-color: #000000;
 }
 
 #mal_link {
