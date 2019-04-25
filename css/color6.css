@@ -1,35 +1,35 @@
 body {
-  color: #3c1a5b;
-  background-color: #fff748;
+  color: #411769;
+  background-color: #eeaabf;
 }
 
 svg {
-  fill: #3c1a5b;
+  fill: #411769;
 }
 
 .lbl-toggle {
-  color: #fff748;
-  background: #3c1a5b;
+  color: #eeaabf;
+  background: #411769;
 }
 
 .lbl-toggle::before {
-  border-left-color: #fff748;
+  border-left-color: #eeaabf;
 }
 
 .slider {
-  border-color: #180031;
-  background-color: #694389;
+  border-color: #18003e;
+  background-color: #704298;
 }
 
 .slider::-webkit-slider-thumb {
-  border-color: #180031;
+  border-color: #18003e;
 }
 
 #mal_link {
-  color: #fff748;
-  background-color: #3c1a5b;
+  color: #eeaabf;
+  background-color: #411769;
 }
 
 #refresh_button {
-  border-color: #3c1a5b;
+  border-color: #411769;
 }
